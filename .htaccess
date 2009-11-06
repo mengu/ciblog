@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^$ /ciblog/index.php [L]
+RewriteCond $1 !^(index\.php|images|css|js|static|video_files|robots\.txt|favicon\.ico)
+RewriteRule ^(.*)$ /ciblog/index.php/$1 [L]
