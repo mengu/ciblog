@@ -67,6 +67,10 @@ class Posts extends Controller
 		}
 		$this->db->order_by('id', 'DESC');
 		$postList = $this->db->get('post', 5, $offset)->result_array();
+		foreach ($postList AS $key => $post)
+		{
+			$postList[$key]['taglist'] = $this->Post->getTagList($postList[$key]['id']);
+		}
 		echo json_encode($postList);
 	}
 

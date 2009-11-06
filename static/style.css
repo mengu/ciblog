@@ -3,7 +3,7 @@ body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-ser
 #posts, #registrationform { float: left; margin-left: 150px; width: 500px; }
 .posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 375px; }
 .posttitle a { text-decoration: none; color: black; }
-.tagpost { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; }
+.tagpost { margin-bottom: 5px; font-family: Arial; font-size: large; }
 .tagpost a { text-decoration: none; color: black; }
 .postdate, .commentinfo { display: inline; font-size: small;} 
 .commentinfo { padding-left: 10px; }
@@ -16,6 +16,7 @@ body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-ser
 #commentform input, textarea { font: 14px Verdana; }
 #commentform textarea { width: 400px; height: 175px; }
 #commentform h2 { margin-left: 100px; padding-top: 15px; }
+.commentbox { background: #F6F6F6; padding: 5px; margin-bottom: 10px;}
 .commentauthor { margin-top: 10px; }
 .commentauthor, .commentbody { font: 16px Sans-serif;}
 h2 { text-transform: uppercase; font-family: Arial; border-bottom: 1px solid #DEE7EF;}

@@ -4,6 +4,7 @@
   <?= $sidebar; ?>
   
   <div id="posts">
+	<h2>Posts Tagged With <?=$tag;?></h2>
     <? foreach ($posts AS $post): ?>
       <div class="tagpost"><a href="/ciblog/posts/view/<?=$post->id;?>"><?=$post->title;?></a></div>
     <? endforeach; ?>

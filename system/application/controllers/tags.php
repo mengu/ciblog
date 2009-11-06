@@ -19,7 +19,8 @@ class Tags extends Controller
 	{
 		$tag = $this->uri->segment(3);
 		$this->db->join('post', "post.id = relations.postid");
-		$data['posts'] = $this->db->get_where('relations', array('tag' => $tag))->result();
+		$data['tag'] = $tag;
+		$data['posts'] = $this->db->get_where('relations', array('tag' => strtolower($tag)))->result();
 		$data['header'] = $this->header;
 		$data['sidebar'] = $this->sidebar;
 		$this->load->view('tags/tag', $data);

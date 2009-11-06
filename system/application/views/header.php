@@ -21,10 +21,11 @@
 		  $.getJSON("<?=base_url();?>posts/more/"+limit,
 			function(data){
 			$.each(data, function(i,item){
-				var result = '<div class="posttitle"><a href="/ciblog/posts/view/'+item.id+'">'+item.title+'</a></div>';
+				var result = '<div class="posttitle"><a href="<?=base_url();?>posts/view/'+item.id+'">'+item.title+'</a></div>';
 				result += '<div class="postdate">'+item.dateline+'</div>';
 				result += '<div class="commentinfo">'+item.commentcount+' Comments</div>';
 				result += '<div class="description">'+item.description+'</div>';
+				result += '<div class="taglist">Tags: '+item.taglist+'</div>';
 				$("#posts").append(result);
           });
 		});

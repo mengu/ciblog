@@ -62,6 +62,7 @@ class Admin extends Controller
 	
 	function editpost()
 	{
+		$data['header'] = $this->load->view('admin/header', false, true);
 		$data['submenus'] = $this->subMenus['post'];
 		$this->db->where('id', $this->uri->segment(3));
 		$post = $this->db->get('post')->result();
