@@ -5,7 +5,7 @@
   
   <div id="posts">
     <? foreach ($posts AS $post): ?>
-      <div class="posttitle"><a href="/ciblog/posts/view/<?=$post->id;?>"><?=$post->title;?></a></div>
+      <div class="posttitle"><a href="<?=base_url();?>posts/view/<?=$post->id;?>"><?=$post->title;?></a></div>
 	  <div class="postdate"><?=$post->dateline;?></div>
 	  <div class="commentinfo"><?=Post::getCommentCount($post->id); ?> Comments</div>
       <div class="description"><?=markdown($post->description);?></div>

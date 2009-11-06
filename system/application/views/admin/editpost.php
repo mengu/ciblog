@@ -2,7 +2,7 @@
 <table style="background: #CFD6DE;" cellpadding="6" cellspacing="1" width="100%">
 <tr>
 	<? foreach ($submenus AS $submenu): ?>
-	<td><a href="/ciblog/admin/<?=$submenu['link'];?>"><?=$submenu['text'];?></a></td>
+	<td><a href="<?=base_url();?>admin/<?=$submenu['link'];?>"><?=$submenu['text'];?></a></td>
 	<? endforeach; ?>
 </tr>
 </table>

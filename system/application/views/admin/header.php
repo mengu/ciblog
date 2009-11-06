@@ -17,9 +17,9 @@
 
 <table style="margin-top: 20px; background: #BACFE4;" cellpadding="6" cellspacing="1" width="100%">
 <tr>
-	<td><a href="/ciblog/admin/posts">Posts</a></td>
-	<td><a href="/ciblog/admin/comments/">Comments</a></td>
-	<td><a href="/ciblog/admin/users">Users</a></td>
-	<td><a href="/ciblog/admin/users">Settings</a></td>
+	<td><a href="<?=base_url();?>admin/posts">Posts</a></td>
+	<td><a href="<?=base_url();?>admin/comments/">Comments</a></td>
+	<td><a href="<?=base_url();?>admin/users">Users</a></td>
+	<td><a href="<?=base_url();?>admin/users">Settings</a></td>
 </tr>
 </table>

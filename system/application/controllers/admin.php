@@ -35,6 +35,7 @@ class Admin extends Controller
 	
 	function newpost()
 	{
+		$data['header'] = $this->load->view('header', false, true);
 		$data['submenus'] = $this->subMenus['post'];
 		$this->load->view('admin/newpost', $data);
 	}
