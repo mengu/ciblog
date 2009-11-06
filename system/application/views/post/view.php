@@ -5,7 +5,7 @@
   <div id="posts">
       <div class="posttitle"><?=$post[0]->title;?></div>
 	  <div class="postdate"><?=$post[0]->dateline;?></div>
-	  <div class="commentinfo"><?=$post[0]->commentcount;?> Comments</div>
+	  <div class="commentinfo"><a href="<?=base_url();?>posts/view/<?=$post[0]->id;?>#comments"><?=Post::getCommentCount($post[0]->id); ?> Comments</a></div>
       <div class="description"><?=markdown($post[0]->body);?></div>
       <div class="taglist">Tags: <?=Post::getTagList($post[0]->id);?></div>
 	  
@@ -31,6 +31,9 @@
 		echo form_open('/comments/create');
 		echo form_hidden('postid', $post[0]->id);
 	  ?>
+	  <? if ($error): ?>
+	  <p><?= $error;?></p>
+	  <? endif; ?>
 	  <? if (!$this->session->userdata('user')): ?>
 	  <p>Name Surname:</p>
 	  <p><?=form_input('name');?></p>

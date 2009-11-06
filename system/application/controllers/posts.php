@@ -41,9 +41,10 @@ class Posts extends Controller
 			$data['username'] = $user['name'];
 		}
 		$data['header'] = $this->header;
+		$data['error'] = false;
 		$data['sidebar'] = $this->sidebar;
 		$data['post'] = $this->db->get_where('post', array('id' => $this->uri->segment(3)))->result();
-		$data['comments'] = $this->db->get_where('comment', array('postid' => $this->uri->segment(3)))->result();
+		$data['comments'] = $this->db->get_where('comment', array('postid' => $this->uri->segment(3), 'approved' => 'approved'))->result();
 		$this->load->view('post/view', $data);
     }
     

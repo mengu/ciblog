@@ -90,6 +90,7 @@ class Post extends Model
 	function getCommentCount($postId)
 	{
 		$this->db->where('postid', $postId);
+		$this->db->where('approved', 'approved');
 		$this->db->from('comment');
 		return $this->db->count_all_results();
 	}

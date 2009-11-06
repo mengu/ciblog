@@ -52,7 +52,7 @@ class Users extends Controller
 				if ($user['password'] == md5(md5($_POST['password']) . $user['joindate']))
 				{
 					$this->session->set_userdata('user', $user);
-					redirect(base_url());
+					redirect(base_url()."admin");
 				}
 				else
 				{
@@ -81,6 +81,24 @@ class Users extends Controller
 		if ($this->session->userdata('user'))
 		{
 			$this->session->unset_userdata('user');
+			redirect(base_url());
+		}
+	}
+	
+	function newpassword()
+	{
+		$data = array('header' => $this->header, 'sidebar' => $this->sidebar, 'errors' => false);
+		$this->load->view('users/newpassword', $data);
+	}
+	
+	function changepassword()
+	{
+		$user = $this->session->userdata('user');
+		$oldPassword = $_POST['password'];
+		if (md5(md5($oldPassword) . $user['joindate'] == $user['password']))
+		{
+			$newPassword = md5(md5($_POST['newpassword']) . $user['joindate']);
+			$this->db->update('user', array('password' => $newPassword), array("id" => $user['id']));
 			redirect(base_url());
 		}
 	}

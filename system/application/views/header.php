@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{=T.accepted_language or 'en'}}">
 <head>
-  <title>Mengu.net <? if (); ?><? endif; ?></title>
+  <title>Mengu.net </title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="<?=base_url();?>static/style.css" />
   <link rel="stylesheet" title="GitHub" type="text/css" href="<?=base_url();?>static/github.css" />
@@ -23,7 +23,7 @@
 			$.each(data, function(i,item){
 				var result = '<div class="posttitle"><a href="<?=base_url();?>posts/view/'+item.id+'">'+item.title+'</a></div>';
 				result += '<div class="postdate">'+item.dateline+'</div>';
-				result += '<div class="commentinfo">'+item.commentcount+' Comments</div>';
+				result += '<div class="commentinfo"><a href="<?=base_url();?>posts/view/'+item.id+'#comments">'+item.commentcount+'</a> Comments</div>';
 				result += '<div class="description">'+item.description+'</div>';
 				result += '<div class="taglist">Tags: '+item.taglist+'</div>';
 				$("#posts").append(result);
