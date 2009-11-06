@@ -7,14 +7,29 @@
   <link rel="stylesheet" title="GitHub" type="text/css" href="<?=base_url();?>static/github.css" />
   <script src="<?=base_url();?>static/highlight.js"></script>
   <script src="<?=base_url();?>static/highlight.pack.js"></script>
-  <script type="text/javascript" src="<?=base_url();?>static/jquery-1.3.2.min"></script>
+  <script type="text/javascript" src="<?=base_url();?>static/jquery-1.3.2.min.js"></script>
+  <script type="text/javascript" src="<?=base_url();?>static/jquery.cookie.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
+	  $.cookie('page', null);
 	  $("#more").click(function() {
-		  $.get("<?=base_url();?>posts/more", { limit: 1, offset: 1 },
+		  var page = $.cookie('page') ? $.cookie('page') : 2;
+		  var perpage = 1;
+		  var postcount = <?=$postCount;?>;
+		  var totalpages = postcount / perpage;
+		  var limit = (page - 1)*perpage;
+		  limit = limit == 0 ? 1 : limit;
+		  $.getJSON("<?=base_url();?>posts/more/"+limit,
 			function(data){
-				$("#posts").append(data);
-		  });
+			$.each(data, function(i,item){
+				var result = '<div class="posttitle"><a href="/ciblog/posts/view/'+item.id+'">'+item.title+'</a></div>';
+				result += '<div class="postdate">'+item.dateline+'</div>';
+				result += '<div class="commentinfo">'+item.commentcount+' Comments</div>';
+				result += '<div class="description">'+item.description+'</div>';
+				$("#posts").append(result);
+          });
+		});
+		$.cookie('page', parseInt(page)+1); 
 	  });
   });
   </script>
