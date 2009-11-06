@@ -1,7 +1,6 @@
 <?= $header; ?>
 
-<?= form_open('admin/deletecomments');?>
-<table style="background: #31C3E7;" cellpadding="6" cellspacing="1" width="100%">
+<table id="subtable" style="background: #31C3E7;" cellpadding="6" cellspacing="1" width="100%">
 <tr style="background: #6D8CA0; color: #fff;">
 <td>Operations</td>
 <td>Name Surname</td>
@@ -21,14 +20,10 @@
 		</td>
 		<td><?=$comment->name;?></td>
 		<td><?=$comment->email;?></td>
-		<td><?=$comment->body;?></td>
+		<td width="40%"><?=$comment->body;?></td>
 		<td><?=Post::printField('title', $comment->postid);?></td>
 	</tr>
 <? endforeach; ?>
-<tr>
-<td><?= form_submit('', 'Delete Selected Posts'); ?></td>
-<td></td>
-</tr>
 </table>
 <?= form_close(); ?>
 

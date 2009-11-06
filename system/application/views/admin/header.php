@@ -7,6 +7,7 @@
   <link rel="stylesheet" title="GitHub" type="text/css" href="<?=base_url();?>static/github.css" /> 
   <style>
   td { padding-left: 5px; }
+  #subtable a { color: black; }
   </style>
 </head>
 <body>
