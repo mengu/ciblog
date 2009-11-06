@@ -14,9 +14,8 @@
 	  $.cookie('page', null);
 	  $("#more").click(function() {
 		  var page = $.cookie('page') ? $.cookie('page') : 2;
-		  var perpage = 1;
+		  var perpage = <?=$perPage;?>;
 		  var postcount = <?=$postCount;?>;
-		  var totalpages = postcount / perpage;
 		  var limit = (page - 1)*perpage;
 		  limit = limit == 0 ? 1 : limit;
 		  $.getJSON("<?=base_url();?>posts/more/"+limit,
