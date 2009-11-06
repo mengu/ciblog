@@ -1,4 +1,4 @@
-body { font-family: Trebuchet MS; }
+body { font-family: LucidaMac; }
 #sidebar { float: left; width: 300px; }
 #posts { float: left; margin-left: 150px; width: 500px; }
 .posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 350px; }
@@ -9,11 +9,11 @@ body { font-family: Trebuchet MS; }
 .postcontent a, .description a { color: #0099CC; }
 .boxtitle { text-transform: uppercase; font-size: large; border-bottom: 1px solid gray; margin-top: 50px; font-family: Sans-serif; }
 .boxcontent a { text-decoration: none; color: #006699; }
-#commentform { background: #C0C0C0; font-family: Verdana; }
+#commentform { background: #DEE7EF; font-family: Verdana; }
 #commentform p { padding-left: 10px; margin: 0; margin-top: 5px;}
-#commentform input { font: 14px Verdana; }
-#commentform textarea { width: 350px; }
-#commentform h2 { margin-left: 100px; }
+#commentform input, textarea { font: 14px Verdana; }
+#commentform textarea { width: 400px; height: 175px; }
+#commentform h2 { margin-left: 100px; padding-top: 15px; }
+.commentauthor { margin-top: 10px; }
 .commentauthor, .commentbody { font: 16px Sans-serif;}
-.commentbody { padding-left: 10px; }
 h2 { text-transform: uppercase; font-family: Arial;}
