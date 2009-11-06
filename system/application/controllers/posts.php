@@ -70,6 +70,7 @@ class Posts extends Controller
 		$postList = $this->db->get('post', 5, $offset)->result_array();
 		foreach ($postList AS $key => $post)
 		{
+			$postList[$key]['commentcount'] = $this->Post->getCommentCount($postList[$key]['id']);
 			$postList[$key]['taglist'] = $this->Post->getTagList($postList[$key]['id']);
 		}
 		echo json_encode($postList);

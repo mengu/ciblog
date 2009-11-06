@@ -24,6 +24,7 @@ class Post extends Model
 	
 	function getLatestComments($limit)
 	{
+		$this->db->where('approved', 'approved');
 		$this->db->order_by('comment.id', 'DESC');
 		return $this->db->get('comment', $limit, 0, 'post')->result();
 	}
