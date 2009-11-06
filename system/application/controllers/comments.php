@@ -41,6 +41,7 @@ class Comments extends Controller
 			$_POST['userid'] = $user['id'];
 			$_POST['name'] = $user['name'];
 			$_POST['email'] = $user['email'];
+			$_POST['approved'] = 'approved';
 			if ($this->db->insert('comment', $_POST))
 			{
 				redirect(base_url()."posts/view/$_POST[postid]#comments");
