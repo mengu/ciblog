@@ -13,30 +13,7 @@
 <body>
 
 <div style="margin-top: 50px;">
-  <div id="sidebar">
-	
-	<div class="boxtitle" style="margin: 0;">Search The Blog</div>
-	<div class="boxcontent">
-	<form method="post" action="post/search">
-	<input type="text" name="query" /> <input type="submit" value="Search" />
-	</form>
-	</div>
-	
-	<div class="boxtitle">Recent Posts</div>
-	<div class="boxcontent">
-	<? foreach ($recentPosts AS $recentPost): ?>
-		<div><a href="<?=base_url();?>posts/view/<?=$recentPost->id;?>"><?=$recentPost->title;?></a></div>
-	<? endforeach; ?>
-	</div>
-	
-	<div class="boxtitle">Recent Comments</div>
-	<div class="boxcontent">
-	<? foreach ($recentComments AS $recentComment): ?>
-		<div>On <a href="<?=base_url();?>posts/view/<?=$recentComment->postId;?>"><?=$recentComment->title;?></a> by <?=$recentComment->name;?></div>
-	<? endforeach; ?>
-	</div>
-	
-  </div>
+  <?= $sidebar; ?>
   <div id="posts">
       <div class="posttitle"><?=$post[0]->title;?></div>
 	  <div class="postdate"><?=$post[0]->dateline;?></div>
@@ -45,9 +22,12 @@
 	  
 	  <div id="comments">
 	  <h2>Comments</h2>
+	  <? $c = 0; ?>
 	  <? foreach($comments AS $comment): ?>
-		<div class="commentauthor"><?=$comment->name;?></div>
+		<div class="comment">
+		<div class="commentauthor"><? if ($comment->website): ?><a href="<?=$comment->website;?>"><?=$comment->name;?></a><? else: ?><?=$comment->name;?><? endif; ?></div>
 		<div class="commentbody"><?=$comment->body;?></div>
+		</div>
 	  <? endforeach; ?>
 	  </div>
 	  
@@ -61,6 +41,8 @@
 	  <p><?=form_input('name');?></p>
 	  <p>E-Mail Address:</p>
 	  <p><?=form_input('email');?></p>
+	  <p>Web Site:</p>
+	  <p><?=form_input('website');?></p>
 	  <p>Comment:</p>
 	  <p><?=form_textarea('body');?></p>
 	  <p><?=form_submit('', 'Post Comment');?></p>
