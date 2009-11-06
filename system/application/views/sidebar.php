@@ -1,8 +1,7 @@
 <div id="sidebar">
-	
 	<div class="boxtitle" style="margin: 0;">Search The Blog</div>
 	<div class="boxcontent">
-	<form method="post" action="post/search">
+	<?= form_open('posts/search');?>
 	<input type="text" name="query" /> <input type="submit" value="Search" />
 	</form>
 	</div>

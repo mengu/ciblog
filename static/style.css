@@ -1,13 +1,13 @@
-body { font-family: LucidaMac; }
+body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; }
 #sidebar { float: left; width: 300px; }
 #posts { float: left; margin-left: 150px; width: 500px; }
 .posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 350px; }
 .posttitle a { text-decoration: none; color: black; }
 .postdate, .commentinfo { display: inline; font-size: small;} 
 .commentinfo { padding-left: 10px; }
-.postcontent, .description { margin-top: 5px; margin-bottom: 50px; }
+.postcontent, .description { margin-top: 5px; margin-bottom: 50px; font-size: 12pt; }
 .postcontent a, .description a { color: #0099CC; }
-.boxtitle { text-transform: uppercase; font-size: large; border-bottom: 1px solid gray; margin-top: 50px; font-family: Sans-serif; }
+.boxtitle { text-transform: uppercase; font-size: large; border-bottom: 1px dashed gray; margin-top: 50px; font-family: Sans-serif; }
 .boxcontent a { text-decoration: none; color: #006699; }
 #commentform { background: #DEE7EF; font-family: Verdana; }
 #commentform p { padding-left: 10px; margin: 0; margin-top: 5px;}
@@ -16,4 +16,10 @@ body { font-family: LucidaMac; }
 #commentform h2 { margin-left: 100px; padding-top: 15px; }
 .commentauthor { margin-top: 10px; }
 .commentauthor, .commentbody { font: 16px Sans-serif;}
-h2 { text-transform: uppercase; font-family: Arial;}
+h2 { text-transform: uppercase; font-family: Arial; border-bottom: 1px solid #DEE7EF;}
+h2 a { color: black; text-decoration: none; outline: none;}
+.result { text-transform: uppercase; font: 16pt Arial; }
+code { padding-left: 6px; margin:0; overflow: auto; font-size: 10pt; }
+.commentbox {  }
+#more { color: #ADC1D6; background: #DEE7EF; margin-left: 450px; padding: 20px; width: 200px; text-align: center; }
+#more:hover { background: #ADC1D6; color: white; cursor: pointer;}
