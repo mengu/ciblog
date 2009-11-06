@@ -20,7 +20,8 @@ class Admin extends Controller
 	
 	function index()
 	{
-		$this->load->view('admin/index');
+		$data['header'] = $this->load->view('admin/header', false, true);
+		$this->load->view('admin/index', $data);
 	}
 	
 	function posts()
@@ -35,7 +36,7 @@ class Admin extends Controller
 	
 	function newpost()
 	{
-		$data['header'] = $this->load->view('header', false, true);
+		$data['header'] = $this->load->view('admin/header', false, true);
 		$data['submenus'] = $this->subMenus['post'];
 		$this->load->view('admin/newpost', $data);
 	}
