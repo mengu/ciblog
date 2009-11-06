@@ -7,6 +7,7 @@
 	  <div class="postdate"><?=$post[0]->dateline;?></div>
 	  <div class="commentinfo"><?=$post[0]->commentcount;?> Comments</div>
       <div class="description"><?=markdown($post[0]->body);?></div>
+      <div class="taglist">Tags: <?=Post::getTagList($post[0]->id);?></div>
 	  
 	  <div id="comments">
 	  <h2>Comments</h2>
@@ -30,12 +31,15 @@
 		echo form_open('/comments/create');
 		echo form_hidden('postid', $post[0]->id);
 	  ?>
+	  <? if (!$this->session->userdata('user')): ?>
 	  <p>Name Surname:</p>
 	  <p><?=form_input('name');?></p>
 	  <p>E-Mail Address:</p>
 	  <p><?=form_input('email');?></p>
 	  <p>Web Site:</p>
 	  <p><?=form_input('website');?></p>
+	  <? endif; ?>
+	  <p>You are logged in as <?=$username;?>.</p>
 	  <p>Comment:</p>
 	  <p><?=form_textarea('body');?></p>
 	  <p><?=form_submit('', 'Post Comment');?></p>

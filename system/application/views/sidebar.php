@@ -6,6 +6,11 @@
 	</form>
 	</div>
 	
+	<div class="boxtitle">Tag List</div>
+	<div class="boxcontent">
+		<div><?=$allTags;?></div>
+	</div>
+	
 	<div class="boxtitle">Recent Posts</div>
 	<div class="boxcontent">
 	<? foreach ($recentPosts AS $recentPost): ?>

@@ -9,12 +9,26 @@ class Comments extends Controller
 	
 	function create()
 	{
-		if (!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['body']))
+		$_POST['dateline'] = time();
+		if (!$this->session->userdata('user'))
 		{
-			$_POST['dateline'] = time();
+			if (!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['body']))
+			{
+				if ($this->db->insert('comment', $_POST))
+				{
+					redirect(base_url()."posts/view/$_POST[postid]#comments");
+				}
+			}
+		}
+		else
+		{
+			$user = $this->session->userdata('user');
+			$_POST['userid'] = $user['id'];
+			$_POST['name'] = $user['name'];
+			$_POST['email'] = $user['email'];
 			if ($this->db->insert('comment', $_POST))
 			{
-				redirect("/posts/view/$_POST[postid]#comments");
+				redirect(base_url()."posts/view/$_POST[postid]#comments");
 			}
 		}
 	}

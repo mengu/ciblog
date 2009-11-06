@@ -25,6 +25,7 @@ class Admin extends Controller
 	
 	function posts()
 	{
+		$data['header'] = $this->load->view('admin/header', false, true);
 		$data['submenus'] = $this->subMenus['post'];
 		$this->db->order_by('id', 'DESC');
 		$data['posts'] = $this->db->get('post')->result();
@@ -109,6 +110,37 @@ class Admin extends Controller
 				$this->db->delete('post', array('id' => $postid));
 			}
 			redirect(base_url()."admin");
+		}
+	}
+	
+	function comments()
+	{
+		$data['header'] = $this->load->view('admin/header', false, true);
+		$data['comments'] = $this->db->query("SELECT * FROM comment ORDER BY id DESC")->result();
+		$this->load->view('admin/comments', $data);
+	}
+	
+	function unapprovecomment()
+	{
+		if ($this->db->update('comment', array('approved' => 'unapproved'), array('id' => $this->uri->segment(3))))
+		{
+			redirect(base_url()."admin/comments");
+		}
+	}
+	
+	function approvecomment()
+	{
+		if ($this->db->update('comment', array('approved' => 'approved'), array('id' => $this->uri->segment(3))))
+		{
+			redirect(base_url()."admin/comments");
+		}
+	}
+	
+	function deletecomment()
+	{
+		if ($this->db->delete('comment', array('id' => $this->uri->segment(3))))
+		{
+			redirect(base_url()."admin/comments");
 		}
 	}
 	

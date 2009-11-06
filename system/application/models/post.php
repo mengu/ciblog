@@ -44,6 +44,7 @@ class Post extends Model
 	{
 		$this->db->where('postid', $postId);
 		$tagList = $this->db->get('relations')->result();
+		$postTags = array();
 		foreach ($tagList AS $tag)
 		{
 			$postTags[] = $tag->tag;
@@ -70,9 +71,35 @@ class Post extends Model
 		$this->db->delete('relations', array('postid' => $postId, 'tag' => $tag));
 	}
 	
+	function getAllTags()
+	{
+		$sql = "SELECT DISTINCT(tag) FROM relations";
+		$tagList = $this->db->query($sql)->result();
+		$allTags = array();
+		foreach ($tagList AS $tag)
+		{
+			$allTags[] = anchor("/tags/".strtolower($tag->tag)."", $tag->tag);
+		}
+		return implode(", ", $allTags);
+	}
+	
 	function getArchives()
 	{
 	}
-    //put your code here
+	
+	function getCommentCount($postId)
+	{
+		$this->db->where('postid', $postId);
+		$this->db->from('comment');
+		return $this->db->count_all_results();
+	}
+    
+    function printField($field, $postId)
+    {
+		$this->db->select($field)->from('post')->where('id', $postId);
+		$result = $this->db->get()->result();
+		echo $result[0]->$field;
+	}
+    
 }
 ?>

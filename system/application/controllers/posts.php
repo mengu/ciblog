@@ -18,6 +18,7 @@ class Posts extends Controller
 		$this->load->helper('markdown');
 		$this->postCount = $this->db->count_all('post');
 		$this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5), true);
+		$this->data['allTags'] = $this->Post->getAllTags();
 		$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
 		$this->data['recentComments'] = $this->Post->getLatestComments(5);
 		$this->sidebar = $this->load->view('sidebar', $this->data, true);
@@ -34,6 +35,11 @@ class Posts extends Controller
     
     function view()
     {
+		if ($this->session->userdata('user'))
+		{
+			$user = $this->session->userdata('user');
+			$data['username'] = $user['name'];
+		}
 		$data['header'] = $this->header;
 		$data['sidebar'] = $this->sidebar;
 		$data['post'] = $this->db->get_where('post', array('id' => $this->uri->segment(3)))->result();
