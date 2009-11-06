@@ -38,8 +38,9 @@
 	  <p><?=form_input('email');?></p>
 	  <p>Web Site:</p>
 	  <p><?=form_input('website');?></p>
-	  <? endif; ?>
+	  <? else: ?>
 	  <p>You are logged in as <?=$username;?>.</p>
+	  <? endif; ?>
 	  <p>Comment:</p>
 	  <p><?=form_textarea('body');?></p>
 	  <p><?=form_submit('', 'Post Comment');?></p>
