@@ -16,28 +16,53 @@ class Posts extends Controller
         parent::Controller();
 		$this->load->model('Post');
 		$this->load->helper('markdown');
-		$this->recentPosts = $this->Post->getLatestEntries(5);
-		$this->recentComments = $this->Post->getLatestComments(5);
-		$this->load->scaffolding('post');
-		$this->load->scaffolding('comment');
+		$this->postCount = $this->db->count_all('post');
+		$this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5), true);
+		$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
+		$this->data['recentComments'] = $this->Post->getLatestComments(5);
+		$this->sidebar = $this->load->view('sidebar', $this->data, true);
     }
 
     function index()
     {
-		$data['recentPosts'] = $this->recentPosts;
-        $data['posts'] = $this->db->get('post')->result();
+		$data['header'] = $this->header;
+		$data['sidebar'] = $this->sidebar;
+		$this->db->order_by('id', 'DESC');
+        $data['posts'] = $this->db->get('post', 5)->result();
         $this->load->view('post/index', $data);
     }
     
     function view()
     {
-		$sidebar['recentComments'] = $this->recentComments;
-		$sidebar['recentPosts'] = $this->recentPosts;
-		$data['sidebar'] = $this->load->view('sidebar', $sidebar, true);
+		$data['header'] = $this->header;
+		$data['sidebar'] = $this->sidebar;
 		$data['post'] = $this->db->get_where('post', array('id' => $this->uri->segment(3)))->result();
 		$data['comments'] = $this->db->get_where('comment', array('postid' => $this->uri->segment(3)))->result();
 		$this->load->view('post/view', $data);
     }
+    
+    function search()
+    {
+		$search = "SELECT post.id, post.title FROM post WHERE post.body 
+				  LIKE '%".$this->db->escape_like_str($_POST['query'])."%' 
+				  OR post.title LIKE '%".$this->db->escape_like_str($_POST['query'])."%'";
+		$data['posts'] = $this->db->query($search)->result();
+		$data['sidebar'] = $this->sidebar;
+		$data['header'] = $this->header;
+		$this->load->view('post/search', $data);
+	}
+	
+	function more()
+	{
+		$offset = $this->uri->segment(3);
+		if (!intval($offset))
+		{
+			return false;
+		}
+		$this->db->order_by('id', 'DESC');
+		$postList = $this->db->get('post', 5, $offset)->result_array();
+		echo json_encode($postList);
+	}
 
 }
 
