@@ -17,6 +17,7 @@ class Posts extends Controller
 		$this->load->model('Post');
 		$this->load->helper('markdown');
 		$this->recentPosts = $this->Post->getLatestEntries(5);
+		$this->recentComments = $this->Post->getLatestComments(5);
 		$this->load->scaffolding('post');
 		$this->load->scaffolding('comment');
     }
@@ -30,7 +31,9 @@ class Posts extends Controller
     
     function view()
     {
-		$data['recentPosts'] = $this->recentPosts;
+		$sidebar['recentComments'] = $this->recentComments;
+		$sidebar['recentPosts'] = $this->recentPosts;
+		$data['sidebar'] = $this->load->view('sidebar', $sidebar, true);
 		$data['post'] = $this->db->get_where('post', array('id' => $this->uri->segment(3)))->result();
 		$data['comments'] = $this->db->get_where('comment', array('postid' => $this->uri->segment(3)))->result();
 		$this->load->view('post/view', $data);
