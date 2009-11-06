@@ -23,7 +23,7 @@ class Post extends Model
 	
 	function getLatestComments($limit)
 	{
-		return $this->db->get('post', $limit)->result();
+		return $this->db->get('comment', $limit, 0, 'post')->result();
 	}
 	
 	function getArchives()
