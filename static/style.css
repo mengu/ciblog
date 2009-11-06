@@ -1,11 +1,13 @@
 body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; }
 #sidebar { float: left; width: 300px; }
 #posts, #registrationform { float: left; margin-left: 150px; width: 500px; }
-.posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 350px; }
+.posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 375px; }
 .posttitle a { text-decoration: none; color: black; }
+.tagpost { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; }
+.tagpost a { text-decoration: none; color: black; }
 .postdate, .commentinfo { display: inline; font-size: small;} 
 .commentinfo { padding-left: 10px; }
-.postcontent, .description { margin-top: 5px; margin-bottom: 50px; font-size: 12pt; }
+.postcontent, .description { margin-top: 5px; margin-bottom: 25px; font-size: 12pt; }
 .postcontent a, .description a { color: #0099CC; }
 .boxtitle { text-transform: uppercase; font-size: large; border-bottom: 1px dashed gray; margin-top: 50px; font-family: Sans-serif; }
 .boxcontent a { text-decoration: none; color: #006699; }
@@ -23,3 +25,4 @@ code { padding-left: 6px; margin:0; overflow: auto; font-size: 10pt; }
 .commentbox {  }
 #more { color: #ADC1D6; background: #DEE7EF; margin-left: 450px; padding: 20px; width: 450px; text-align: center; }
 #more:hover { background: #ADC1D6; color: white; cursor: pointer;}
+.taglist, .taglist a { color: #7D9C9F; margin-bottom: 25px; }

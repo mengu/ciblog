@@ -42,6 +42,10 @@
 		<td><input type="checkbox" name="delete[]" value="<?=$post->id;?>">Delete</td>
 	</tr>
 <? endforeach; ?>
+<tr>
+<td><?= form_submit('', 'Delete Selected Posts'); ?></td>
+<td></td>
+</tr>
 </table>
 <?= form_close(); ?>
 

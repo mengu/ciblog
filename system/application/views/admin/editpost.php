@@ -37,6 +37,10 @@
 		<td><?= form_input('title', $post[0]->title);?></td>
 	</tr>
 	<tr>
+		<td>Tags:</td>
+		<td><?= form_input('tags', $post[0]->tags);?></td>
+	</tr>
+	<tr>
 		<td>Description:</td>
 		<td><?= form_textarea('description', $post[0]->description);?></td>
 	</tr>

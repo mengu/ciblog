@@ -7,6 +7,7 @@
   <link rel="stylesheet" title="GitHub" type="text/css" href="<?=base_url();?>static/github.css" /> 
   <style>
   td { padding-left: 5px; }
+  input[type="text"] { width: 400px; font-size: 14pt;}
   </style>
 </head>
 <body>
@@ -34,6 +35,10 @@
 	<tr>
 		<td>Title:</td>
 		<td><?= form_input('title');?></td>
+	</tr>
+	<tr>
+		<td>Tags:</td>
+		<td><?= form_input('tags');?></td>
 	</tr>
 	<tr>
 		<td>Description:</td>

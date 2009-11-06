@@ -28,6 +28,48 @@ class Post extends Model
 		return $this->db->get('comment', $limit, 0, 'post')->result();
 	}
 	
+	function getTagList($postId)
+	{
+		$this->db->where('postid', $postId);
+		$tagList = $this->db->get('relations')->result();
+		$postTags = array();
+		foreach ($tagList AS $tag)
+		{
+			$postTags[] = anchor("/tags/".strtolower($tag->tag)."", $tag->tag);
+		}
+		return implode(", ", $postTags);
+	}
+	
+	function getPostTags($postId)
+	{
+		$this->db->where('postid', $postId);
+		$tagList = $this->db->get('relations')->result();
+		foreach ($tagList AS $tag)
+		{
+			$postTags[] = $tag->tag;
+		}
+		return $postTags;
+	}
+	
+	function postHasTag($postId, $tag)
+	{
+		$this->db->where('postid', $postId);
+		$this->db->where('tag', $tag);
+		$this->db->from('relations');
+		$count = $this->db->count_all_results();
+		return $count > 0 ? true : false;
+	}
+	
+	function saveTag($postId, $tag)
+	{
+		$this->db->insert('relations', array('postid' => $postId, 'tag' => $tag));
+	}
+	
+	function deleteTag($postId, $tag)
+	{
+		$this->db->delete('relations', array('postid' => $postId, 'tag' => $tag));
+	}
+	
 	function getArchives()
 	{
 	}

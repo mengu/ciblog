@@ -1,0 +1,21 @@
+
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+indent_mode=2
+
+[project]
+name=CodeIgniter Blog
+base_path=/var/www/ciblog
+make_in_base_path=false
+
+[files]
+current_page=2
+FILE_NAME_0=1074;PHP;0;16;1;1;0;/var/www/ciblog/system/application/views/post/index.php;0
+FILE_NAME_1=203;PHP;0;16;1;1;0;/var/www/ciblog/system/application/controllers/comments.php;0
+FILE_NAME_2=1075;PHP;0;16;1;1;0;/var/www/ciblog/system/application/views/post/view.php;0
+FILE_NAME_3=771;CSS;0;16;1;1;0;/var/www/ciblog/static/style.css;0
+FILE_NAME_4=781;PHP;0;16;1;1;0;/var/www/ciblog/system/application/controllers/posts.php;0
+FILE_NAME_5=154;PHP;0;16;1;1;0;/var/www/ciblog/system/application/views/sidebar.php;0
