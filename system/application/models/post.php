@@ -18,11 +18,13 @@ class Post extends Model
 	
 	function getLatestEntries($limit)
 	{
+		$this->db->order_by('id', 'DESC');
 		return $this->db->get('post', $limit)->result();
 	}
 	
 	function getLatestComments($limit)
 	{
+		$this->db->order_by('comment.id', 'DESC');
 		return $this->db->get('comment', $limit, 0, 'post')->result();
 	}
 	
