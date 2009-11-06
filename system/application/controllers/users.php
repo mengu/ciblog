@@ -7,7 +7,9 @@ class Users extends Controller
 		parent::Controller();
 		$this->load->model('Post');
 		$this->load->model('User');
+		$this->load->helper('lastfm');
 		$this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0), true);
+		$this->data['recentTracks'] = getRecentTracks();
 		$this->data['allTags'] = $this->Post->getAllTags();
 		$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
 		$this->data['recentComments'] = $this->Post->getLatestComments(5);

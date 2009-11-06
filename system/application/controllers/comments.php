@@ -18,6 +18,7 @@ class Comments extends Controller
 			{
 				if ($this->db->insert('comment', $_POST))
 				{
+					$this->session->set_flashdata('commentsaved', 'Thank you for posting comment. Your comment is currently awaiting approval.');
 					redirect(base_url()."posts/view/$_POST[postid]#comments");
 				}
 			}

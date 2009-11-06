@@ -31,6 +31,9 @@
 		echo form_open('/comments/create');
 		echo form_hidden('postid', $post[0]->id);
 	  ?>
+	  <? if ($this->session->flashdata('commentsaved')): ?>
+	  <p><?= $this->session->flashdata('commentsaved'); ?></p>
+	  <? endif; ?>
 	  <? if ($error): ?>
 	  <p><?= $error;?></p>
 	  <? endif; ?>

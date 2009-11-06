@@ -25,6 +25,13 @@
 	<? endforeach; ?>
 	</div>
 	
+	<div class="boxtitle">Recently Listened</div>
+	<div class="boxcontent">
+		<? foreach ($recentTracks AS $recentTrack): ?>
+		<div><?= $recentTrack['track'];?></div>
+		<? endforeach; ?>
+	</div>
+	
 	<div class="boxtitle">Recommended Links</div>
 	<div class="boxcontent">
 		<div><a href="http://www.ahmetkakici.com">Ahmet Kakıcı</a></div>
