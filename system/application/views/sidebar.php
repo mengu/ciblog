@@ -25,4 +25,11 @@
 	<? endforeach; ?>
 	</div>
 	
+	<div class="boxtitle">Recommended Links</div>
+	<div class="boxcontent">
+		<div><a href="http://www.ahmetkakici.com">Ahmet Kakıcı</a></div>
+		<div><a href="http://www.codeigniter.gent.tr">CodeIgniter Türkiye</a></div>
+		<div><a href="http://www.web2py.com">web2py</a></div>
+	</div>
+	
   </div>
