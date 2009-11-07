@@ -11,11 +11,15 @@
   <script type="text/javascript" src="<?=base_url();?>static/jquery.cookie.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
+	  perpage = <?=$perPage;?>;
+	  postcount = <?=$postCount;?>;
+	  if (postcount <= perpage)
+	  {
+		  $("#more").css('display', 'none');
+	  }
 	  $.cookie('page', null);
 	  $("#more").click(function() {
 		  var page = $.cookie('page') ? $.cookie('page') : 2;
-		  var perpage = <?=$perPage;?>;
-		  var postcount = <?=$postCount;?>;
 		  var limit = (page - 1)*perpage;
 		  limit = limit == 0 ? 1 : limit;
 		  $.getJSON("<?=base_url();?>posts/more/"+limit,

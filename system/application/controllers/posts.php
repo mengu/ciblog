@@ -16,11 +16,9 @@ class Posts extends Controller
         parent::Controller();
 		$this->load->model('Post');
 		$this->load->helper('markdown');
-		$this->load->helper('lastfm');
 		$this->postCount = $this->db->count_all('post');
 		$this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5), true);
 		$this->data['allTags'] = $this->Post->getAllTags();
-		$this->data['recentTracks'] = getRecentTracks();
 		$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
 		$this->data['recentComments'] = $this->Post->getLatestComments(5);
 		$this->sidebar = $this->load->view('sidebar', $this->data, true);
