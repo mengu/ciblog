@@ -33,4 +33,12 @@
 		<div><a href="http://www.ddili.org">D Dili</a></div>
 	</div>
 	
+	<? if ($this->session->userdata('isAdmin')): ?>
+	<div class="boxtitle">Administration</div>
+	<div class="boxcontent">
+		<div><a href="<?=base_url();?>admin">Admin Panel</a></div>
+		<div><a href="<?=base_url();?>users/logout">Logout</a></div>
+	</div>
+	<? endif; ?>
+	
   </div>

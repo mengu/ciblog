@@ -1,6 +1,6 @@
 body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; }
 #sidebar { float: left; width: 300px; }
-#posts, #registrationform { float: left; margin-left: 150px; width: 500px; }
+#posts, #registrationform { float: left; margin-left: 150px; width: 600px; }
 .posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 375px; }
 .posttitle a { text-decoration: none; color: black; }
 .tagpost { margin-bottom: 5px; font-family: Arial; font-size: large; }

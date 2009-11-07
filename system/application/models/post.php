@@ -67,7 +67,7 @@ class Post extends Model
 		$this->db->insert('relations', array('postid' => $postId, 'tag' => $tag, 'tagslug' => $tagslug));
 	}
 	
-	function deleteTag($postId, $tag)
+	function deleteTag($postId, $tagslug)
 	{
 		$this->db->delete('relations', array('postid' => $postId, 'tagslug' => $tagslug));
 	}

@@ -94,14 +94,14 @@ class Admin extends Controller
 					$this->Post->saveTag($_POST['id'], $tag, $tagslug);
 				}
 			}
-			foreach ($postTagList AS $postTag)
+			/*foreach ($postTagList AS $postTag)
 			{
 				// if tag in database isn't posted, delete it.
 				if (!in_array($postTag, $tagSlugList))
 				{
 					$this->Post->deleteTag($_POST['id'], $postTag);
 				}
-			}
+			}*/
 			redirect(base_url()."post/".$_POST['slug']);
 		}
 	}

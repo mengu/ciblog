@@ -51,6 +51,7 @@ class Users extends Controller
 				// do the passwords match?
 				if ($user['password'] == md5(md5($_POST['password']) . $user['joindate']))
 				{
+					$this->session->set_userdata('isAdmin', $user['group'] == 'admin' ? true : false);
 					$this->session->set_userdata('user', $user);
 					redirect(base_url()."admin");
 				}
@@ -80,7 +81,12 @@ class Users extends Controller
 	{
 		if ($this->session->userdata('user'))
 		{
+			$this->session->unset_userdata('isAdmin');
 			$this->session->unset_userdata('user');
+			redirect(base_url());
+		}
+		else
+		{
 			redirect(base_url());
 		}
 	}
