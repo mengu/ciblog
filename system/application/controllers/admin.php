@@ -43,20 +43,24 @@ class Admin extends Controller
 	
 	function createpost()
 	{
+		$trChars = array("ç", "ı", "ğ", "ş", "ö", "ü");
+		$replaceChars = array("c", "i", "g", "s", "o", "u");
 		$_POST['dateline'] = date("Y-m-d h:i:s");
 		$_POST['commentcount'] = 0;
 		$taglist = explode(", ", $_POST['tags']);
 		unset($_POST['tags']);
+		$_POST['slug'] = $this->Post->makeTitleReadable($_POST['title']);
 		if ($this->db->insert('post', $_POST))
 		{
 			$postId = $this->db->insert_id();
 			foreach ($taglist AS $tag)
 			{
+				$tag = str_replace($trChars, $replaceChars, $tag);
 				$relationData['postid'] = $postId;
 				$relationData['tag'] = $tag;
 				$this->db->insert('relations', $relationData);
 			}
-			redirect(base_url()."posts/view/".$postId);
+			redirect(base_url()."post/".$_POST['slug']);
 		}
 	}
 	
@@ -79,13 +83,17 @@ class Admin extends Controller
 	
 	function updatepost()
 	{
+		$trChars = array("ç", "ı", "ğ", "ş", "ö", "ü");
+		$replaceChars = array("c", "i", "g", "s", "o", "u");
 		$tagList = explode(", ", $_POST['tags']);
 		unset($_POST['tags']);
+		$_POST['slug'] = $this->Post->makeTitleReadable($_POST['title']);
 		if ($this->db->update('post', $_POST, array('id' => $_POST['id'])))
 		{
 			$postTagList = $this->Post->getPostTags($_POST['id']);
 			foreach ($tagList AS $tag)
 			{
+				$tag = str_replace($trChars, $replaceChars, $tag);
 				// if post doesn't have this tag, save it.
 				if (!$this->Post->postHasTag($_POST['id'], $tag))
 				{
@@ -100,7 +108,7 @@ class Admin extends Controller
 					$this->Post->deleteTag($_POST['id'], $postTag);
 				}
 			}
-			redirect(base_url()."posts/view/".$_POST['id']);
+			redirect(base_url()."post/".$_POST['slug']);
 		}
 	}
 	

@@ -103,5 +103,15 @@ class Post extends Model
 		echo $result[0]->$field;
 	}
     
+    function makeTitleReadable($title)
+    {
+		$trChars = array("ç", "ı", "ğ", "ş", "ö", "ü");
+		$replaceChars = array("c", "i", "g", "s", "o", "u");
+		$title = str_replace($trChars, $replaceChars, $title);
+		$title = str_replace(" ", "-", strtolower($title));
+		preg_match_all('/[-A-Z0-9]+/i', $title, $newTitle);
+		return $newTitle[0][0];
+	}
+    
 }
 ?>
