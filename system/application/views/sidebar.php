@@ -14,14 +14,14 @@
 	<div class="boxtitle">Recent Posts</div>
 	<div class="boxcontent">
 	<? foreach ($recentPosts AS $recentPost): ?>
-		<div><a href="<?=base_url();?>posts/view/<?=$recentPost->id;?>"><?=$recentPost->title;?></a></div>
+		<div><a href="<?=base_url();?>post/<?=$recentPost->slug;?>"><?=$recentPost->title;?></a></div>
 	<? endforeach; ?>
 	</div>
 	
 	<div class="boxtitle">Recent Comments</div>
 	<div class="boxcontent">
 	<? foreach ($recentComments AS $recentComment): ?>
-		<div>On <a href="<?=base_url();?>posts/view/<?=$recentComment->postid;?>"><?=$recentComment->title;?></a> by <?=$recentComment->name;?></div>
+		<div>On <a href="<?=base_url();?>post/<?=$recentComment->slug;?>"><?=$recentComment->title;?></a> by <?=$recentComment->name;?></div>
 	<? endforeach; ?>
 	</div>
 		

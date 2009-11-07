@@ -43,8 +43,6 @@ class Admin extends Controller
 	
 	function createpost()
 	{
-		$trChars = array("ç", "ı", "ğ", "ş", "ö", "ü");
-		$replaceChars = array("c", "i", "g", "s", "o", "u");
 		$_POST['dateline'] = date("Y-m-d h:i:s");
 		$_POST['commentcount'] = 0;
 		$taglist = explode(", ", $_POST['tags']);
@@ -55,10 +53,7 @@ class Admin extends Controller
 			$postId = $this->db->insert_id();
 			foreach ($taglist AS $tag)
 			{
-				$tag = str_replace($trChars, $replaceChars, $tag);
-				$relationData['postid'] = $postId;
-				$relationData['tag'] = $tag;
-				$this->db->insert('relations', $relationData);
+				$this->Post->saveTag($postId, $tag, $this->Post->makeTitleReadable($tag));
 			}
 			redirect(base_url()."post/".$_POST['slug']);
 		}
@@ -83,8 +78,7 @@ class Admin extends Controller
 	
 	function updatepost()
 	{
-		$trChars = array("ç", "ı", "ğ", "ş", "ö", "ü");
-		$replaceChars = array("c", "i", "g", "s", "o", "u");
+		$tagSlugList = explode(", ", $this->Post->makeTitleReadable($_POST['tags']));
 		$tagList = explode(", ", $_POST['tags']);
 		unset($_POST['tags']);
 		$_POST['slug'] = $this->Post->makeTitleReadable($_POST['title']);
@@ -93,17 +87,17 @@ class Admin extends Controller
 			$postTagList = $this->Post->getPostTags($_POST['id']);
 			foreach ($tagList AS $tag)
 			{
-				$tag = str_replace($trChars, $replaceChars, $tag);
+				$tagslug = $this->Post->makeTitleReadable($tag);
 				// if post doesn't have this tag, save it.
-				if (!$this->Post->postHasTag($_POST['id'], $tag))
+				if (!$this->Post->postHasTag($_POST['id'], $tagslug))
 				{
-					$this->Post->saveTag($_POST['id'], $tag);
+					$this->Post->saveTag($_POST['id'], $tag, $tagslug);
 				}
 			}
 			foreach ($postTagList AS $postTag)
 			{
 				// if tag in database isn't posted, delete it.
-				if (!in_array($postTag, $tagList))
+				if (!in_array($postTag, $tagSlugList))
 				{
 					$this->Post->deleteTag($_POST['id'], $postTag);
 				}
@@ -118,6 +112,7 @@ class Admin extends Controller
 		{
 			foreach ($_POST['delete'] AS $postid)
 			{
+				$this->Post->deletePostTags($postid);
 				$this->db->delete('post', array('id' => $postid));
 			}
 			redirect(base_url()."admin");

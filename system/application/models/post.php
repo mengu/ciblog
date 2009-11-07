@@ -36,7 +36,7 @@ class Post extends Model
 		$postTags = array();
 		foreach ($tagList AS $tag)
 		{
-			$postTags[] = anchor("/tags/".strtolower($tag->tag)."", $tag->tag);
+			$postTags[] = anchor("/tags/".$tag->tagslug."", $tag->tag);
 		}
 		return implode(", ", $postTags);
 	}
@@ -48,38 +48,38 @@ class Post extends Model
 		$postTags = array();
 		foreach ($tagList AS $tag)
 		{
-			$postTags[] = $tag->tag;
+			$postTags[] = $tag->tagslug;
 		}
 		return $postTags;
 	}
 	
-	function postHasTag($postId, $tag)
+	function postHasTag($postId, $tagslug)
 	{
 		$this->db->where('postid', $postId);
-		$this->db->where('tag', $tag);
+		$this->db->where('tagslug', $tagslug);
 		$this->db->from('relations');
 		$count = $this->db->count_all_results();
 		return $count > 0 ? true : false;
 	}
 	
-	function saveTag($postId, $tag)
+	function saveTag($postId, $tag, $tagslug)
 	{
-		$this->db->insert('relations', array('postid' => $postId, 'tag' => $tag));
+		$this->db->insert('relations', array('postid' => $postId, 'tag' => $tag, 'tagslug' => $tagslug));
 	}
 	
 	function deleteTag($postId, $tag)
 	{
-		$this->db->delete('relations', array('postid' => $postId, 'tag' => $tag));
+		$this->db->delete('relations', array('postid' => $postId, 'tagslug' => $tagslug));
 	}
 	
 	function getAllTags()
 	{
-		$sql = "SELECT DISTINCT(tag) FROM relations";
+		$sql = "SELECT DISTINCT(tagslug), tag FROM relations";
 		$tagList = $this->db->query($sql)->result();
 		$allTags = array();
 		foreach ($tagList AS $tag)
 		{
-			$allTags[] = anchor("/tags/".strtolower($tag->tag)."", $tag->tag);
+			$allTags[] = anchor("/tags/".$tag->tagslug."", $tag->tag);
 		}
 		return implode(", ", $allTags);
 	}
@@ -111,6 +111,11 @@ class Post extends Model
 		$title = str_replace(" ", "-", strtolower($title));
 		preg_match_all('/[-A-Z0-9]+/i', $title, $newTitle);
 		return $newTitle[0][0];
+	}
+	
+	function deletePostTags($postid)
+	{
+		$this->db->delete('relations', array('postid' => $postid));
 	}
     
 }

@@ -18,11 +18,12 @@ class Tags extends Controller
 	function tag()
 	{
 		$tag = $this->uri->segment(3);
+		$tagInfo = $this->db->query("SELECT tag FROM relations WHERE tagslug = '$tag'")->result();
 		$this->db->join('post', "post.id = relations.postid");
-		$data['tag'] = $tag;
-		$data['posts'] = $this->db->get_where('relations', array('tag' => strtolower($tag)))->result();
+		$data['posts'] = $this->db->get_where('relations', array('tagslug' => strtolower($tag)))->result();
 		$data['header'] = $this->header;
 		$data['sidebar'] = $this->sidebar;
+		$data['tag'] = $tagInfo[0]->tag;
 		$this->load->view('tags/tag', $data);
 	}
 

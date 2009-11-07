@@ -45,7 +45,7 @@ class Comments extends Controller
 			$_POST['approved'] = 'approved';
 			if ($this->db->insert('comment', $_POST))
 			{
-				redirect(base_url()."posts/view/$_POST[postid]#comments");
+				redirect(base_url()."post/".$this->Post->printField('slug', $_POST['postid'])."#comments");
 			}
 		}
 	}
