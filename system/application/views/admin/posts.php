@@ -15,7 +15,7 @@
 </tr>
 <? foreach ($posts AS $post): ?>
 	<tr>
-		<td><a href="/ciblog/admin/editpost/<?=$post->id;?>"><?=$post->title; ?></a></td>
+		<td><a href="<?=base_url();?>admin/editpost/<?=$post->id;?>"><?=$post->title; ?></a></td>
 		<td><input type="checkbox" name="delete[]" value="<?=$post->id;?>">Delete</td>
 	</tr>
 <? endforeach; ?>
