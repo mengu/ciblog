@@ -144,8 +144,10 @@ class Admin extends Controller
 	
 	function deletecomment()
 	{
+		$post = $this->db->query("SELECT postid, commentcount FROM comment INNER JOIN post ON (comment.postid = post.id) WHERE comment.id = '".$this->uri->segment(3)."'")->result();
 		if ($this->db->delete('comment', array('id' => $this->uri->segment(3))))
 		{
+			$this->db->update('post', array('commentcount' => $post[0]->commentcount-1), array('id' => $post[0]->postid));
 			redirect(base_url()."admin/comments");
 		}
 	}

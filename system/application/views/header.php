@@ -27,7 +27,8 @@
 			$.each(data, function(i,item){
 				var result = '<div class="posttitle"><a href="<?=base_url();?>post/'+item.slug+'">'+item.title+'</a></div>';
 				result += '<div class="postdate">'+item.dateline+'</div>';
-				result += '<div class="commentinfo"><a href="<?=base_url();?>post/'+item.slug+'#comments">'+item.commentcount+' Comments</a></div>';
+				var commentText = item.commentcount > 1 ? 'Comments' : 'Comment';
+				result += '<div class="commentinfo"><a href="<?=base_url();?>post/'+item.slug+'#comments">'+item.commentcount+' '+commentText+'</a></div>';
 				result += '<div class="description">'+item.description+'</div>';
 				result += '<div class="taglist">Tags: '+item.taglist+'</div>';
 				$("#posts").append(result);

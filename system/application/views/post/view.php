@@ -6,7 +6,7 @@
 	<? if (count($post) > 0): ?>
       <div class="posttitle"><?=$post[0]->title;?></div>
 	  <div class="postdate"><?=$post[0]->dateline;?></div>
-	  <div class="commentinfo"><a href="<?=base_url();?>post/<?=$post[0]->slug;?>#comments"><?=Post::getCommentCount($post[0]->id); ?> Comments</a></div>
+	  <div class="commentinfo"><a href="<?=base_url();?>post/<?=$post[0]->slug;?>#comments"><?= $post[0]->commentcount; ?> Comment<? if(count($post[0]->commentcount) > 1): ?>s<? endif;?></a></div>
       <div class="description"><?=markdown($post[0]->body);?></div>
       <div class="taglist">Tags: <?=Post::getTagList($post[0]->id);?></div>
 	  <div id="comments">

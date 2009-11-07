@@ -18,8 +18,10 @@ class Comments extends Controller
 			{
 				if ($this->db->insert('comment', $_POST))
 				{
+					$commentCount = $this->Post->getCommentCount($_POST['postid']);
+					$this->db->update('post', array('commentcount' => $commentCount+1), array('id' => $_POST['postid']));
 					$this->session->set_flashdata('commentsaved', 'Thank you for posting comment. Your comment is currently awaiting approval.');
-					redirect(base_url()."posts/view/$_POST[postid]#comments");
+					redirect(base_url()."post/".$this->Post->getField('slug', $_POST['postid'])."#comments");
 				}
 			}
 			else
@@ -38,6 +40,7 @@ class Comments extends Controller
 		}
 		else
 		{
+			$commentCount = $this->Post->getCommentCount($_POST['postid']);
 			$user = $this->session->userdata('user');
 			$_POST['userid'] = $user['id'];
 			$_POST['name'] = $user['name'];
@@ -45,7 +48,8 @@ class Comments extends Controller
 			$_POST['approved'] = 'approved';
 			if ($this->db->insert('comment', $_POST))
 			{
-				redirect(base_url()."post/".$this->Post->printField('slug', $_POST['postid'])."#comments");
+				$this->db->update('post', array('commentcount' => $commentCount+1), array('id' => $_POST['postid']));
+				redirect(base_url()."post/".$this->Post->getField('slug', $_POST['postid'])."#comments");
 			}
 		}
 	}

@@ -96,11 +96,11 @@ class Post extends Model
 		return $this->db->count_all_results();
 	}
     
-    function printField($field, $postId)
+    function getField($field, $postId)
     {
 		$this->db->select($field)->from('post')->where('id', $postId);
 		$result = $this->db->get()->result();
-		echo $result[0]->$field;
+		return $result[0]->$field;
 	}
     
     function makeTitleReadable($title)

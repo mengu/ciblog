@@ -21,7 +21,7 @@
 		<td><?=$comment->name;?></td>
 		<td><?=$comment->email;?></td>
 		<td width="40%"><?=$comment->body;?></td>
-		<td><?=Post::printField('title', $comment->postid);?></td>
+		<td><?=Post::getField('title', $comment->postid);?></td>
 	</tr>
 <? endforeach; ?>
 </table>
