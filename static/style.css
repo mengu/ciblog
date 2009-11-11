@@ -23,7 +23,7 @@ body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-ser
 h2 { text-transform: uppercase; font-family: Arial; border-bottom: 1px solid #DEE7EF;}
 h2 a { color: black; text-decoration: none; outline: none;}
 .result { text-transform: uppercase; font: 16pt Arial; }
-code { padding-left: 6px; margin:0; overflow: auto; font-size: 10pt; }
+code { padding-left: 6px; padding-bottom: 10px; padding-top: 10px; margin:0; overflow: auto; font-size: 10pt; }
 .commentbox {  }
 #more { color: #ADC1D6; background: #DEE7EF; margin-left: 450px; padding: 20px; width: 450px; text-align: center; }
 #more:hover { background: #ADC1D6; color: white; cursor: pointer;}
