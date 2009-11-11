@@ -41,7 +41,7 @@
 */
 
 $route['default_controller'] = "posts";
-$route['scaffolding_trigger'] = "blogscaffold";
+$route['scaffolding_trigger'] = "";
 $route['post/([a-z-0-9]+)'] = 'posts/view/$1';
 $route['tag/([a-z-0-9]+)'] = 'tags/tag/$1';
 
