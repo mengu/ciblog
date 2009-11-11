@@ -9,6 +9,7 @@ class Tags extends Controller
 		$this->load->model('Post');
 		$this->postCount = $this->db->count_all('post');
 		$this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0), true);
+		$this->data['blogArchives'] = $this->Post->getArchives();
 		$this->data['allTags'] = $this->Post->getAllTags();
 		$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
 		$this->data['recentComments'] = $this->Post->getLatestComments(5);
@@ -20,6 +21,7 @@ class Tags extends Controller
 		$tag = $this->uri->segment(2);
 		$tagInfo = $this->db->query("SELECT tag FROM relations WHERE tagslug = '$tag'")->result();
 		$this->db->join('post', "post.id = relations.postid");
+		$this->db->order_by('post.id', 'desc');
 		$data['posts'] = $this->db->get_where('relations', array('tagslug' => strtolower($tag)))->result();
 		$data['header'] = $this->header;
 		$data['sidebar'] = $this->sidebar;

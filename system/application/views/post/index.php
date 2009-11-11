@@ -5,7 +5,7 @@
   
   <div id="posts">
     <? foreach ($posts AS $post): ?>
-    <? /*Post::updateSlug($post->title, $post->id); */?>
+    <? /*Post::updateSlug($post->title, $post->id); */ ?>
       <div class="posttitle"><a href="<?=base_url();?>post/<?=$post->slug;?>"><?=$post->title;?></a></div>
 	  <div class="postdate"><?=$post->dateline;?></div>
 	  <div class="commentinfo"><a href="<?=base_url();?>post/<?=$post->slug;?>#comments"><?=$post->commentcount;?> Comment<? if(count($post->commentcount) > 1): ?>s<? endif;?></a></div>

@@ -36,7 +36,7 @@ class Post extends Model
 		$postTags = array();
 		foreach ($tagList AS $tag)
 		{
-			$postTags[] = anchor("/tags/".$tag->tagslug."", $tag->tag);
+			$postTags[] = anchor("/tag/".$tag->tagslug."", $tag->tag);
 		}
 		return implode(", ", $postTags);
 	}
@@ -115,9 +115,15 @@ class Post extends Model
 		$trChars = array("ç", "ı", "ğ", "ş", "ö", "ü");
 		$replaceChars = array("c", "i", "g", "s", "o", "u");
 		$title = str_replace($trChars, $replaceChars, $title);
-		$specialChars = array("-", " ", "'", "'", "$", ".");
-		$replaceSpecialChars = array("", "-", "", "", "s", "");
-		$title = str_replace($specialChars, $replaceSpecialChars, strtolower($title));
+		preg_match_all('/[^\sA-Za-z-0-9]/i', $title, $matches);
+		foreach ($matches[0] AS $char)
+		{
+		    $title = str_replace("$char", "", $title);
+		}
+		$title = str_replace(" ", "-", strtolower($title));
+		//$specialChars = array("-", " ", "'", "'", "$", ".");
+		//$replaceSpecialChars = array("", "-", "", "", "s", "");
+		//$title = str_replace($specialChars, $replaceSpecialChars, strtolower($title));
 		return $title;
 	}
 	

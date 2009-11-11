@@ -27,6 +27,7 @@ class Archives extends Controller
         {
             $this->db->like('dateline', "$year/$month", 'after');
         }
+        $this->db->order_by('post.id', 'desc');
         $this->db->select('slug, title');
         $data['archives'] = $this->db->get('post')->result();
         $data['header'] = $this->header;
