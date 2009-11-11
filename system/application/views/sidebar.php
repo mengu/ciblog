@@ -33,6 +33,13 @@
 		<div><a href="http://www.ddili.org">D Dili</a></div>
 	</div>
 	
+	<div class="boxtitle">Archives</div>
+	<div class="boxcontent">
+	<? foreach ($blogArchives AS $blogArchive): ?>
+	    <div><a href="<?=base_url();?>archives/view/<?=$blogArchive['link'];?>"><?=$blogArchive['display']?></a></div>
+	<? endforeach; ?>
+	</div>
+	
 	<? if ($this->session->userdata('isAdmin')): ?>
 	<div class="boxtitle">Administration</div>
 	<div class="boxcontent">
