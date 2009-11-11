@@ -9,6 +9,7 @@ body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-ser
 .commentinfo { padding-left: 10px; }
 .postcontent, .description { margin-top: 5px; margin-bottom: 25px; font-size: 12pt; }
 .postcontent a, .description a, .commentinfo a { color: #0099CC; }
+.postcontent h2, .description h2 { font-size: 14pt; }
 .boxtitle { text-transform: uppercase; font-size: x-large; border-bottom: 1px dashed gray; margin-top: 50px; font-family: Sans-serif; }
 .boxcontent a { text-decoration: none; color: #006699; }
 #commentform { background: #DEE7EF; font-family: Verdana; }

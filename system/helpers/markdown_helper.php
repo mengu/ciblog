@@ -50,7 +50,7 @@ function Markdown($text) {
 		$parser_class = MARKDOWN_PARSER_CLASS;
 		$parser = new $parser_class;
 	}
-
+	$parser->no_markup = true;
 	# Transform text using parser.
 	return $parser->transform($text);
 }

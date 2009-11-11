@@ -17,7 +17,7 @@ class Tags extends Controller
 	
 	function tag()
 	{
-		$tag = $this->uri->segment(3);
+		$tag = $this->uri->segment(2);
 		$tagInfo = $this->db->query("SELECT tag FROM relations WHERE tagslug = '$tag'")->result();
 		$this->db->join('post', "post.id = relations.postid");
 		$data['posts'] = $this->db->get_where('relations', array('tagslug' => strtolower($tag)))->result();

@@ -79,7 +79,7 @@ class Post extends Model
 		$allTags = array();
 		foreach ($tagList AS $tag)
 		{
-			$allTags[] = anchor("/tags/".$tag->tagslug."", $tag->tag);
+			$allTags[] = anchor("/tag/".$tag->tagslug."", $tag->tag);
 		}
 		return implode(", ", $allTags);
 	}
@@ -108,14 +108,20 @@ class Post extends Model
 		$trChars = array("ç", "ı", "ğ", "ş", "ö", "ü");
 		$replaceChars = array("c", "i", "g", "s", "o", "u");
 		$title = str_replace($trChars, $replaceChars, $title);
-		$title = str_replace(" ", "-", strtolower($title));
-		preg_match_all('/[-A-Z0-9]+/i', $title, $newTitle);
-		return $newTitle[0][0];
+		$specialChars = array("-", " ", "'", "'", "$", ".");
+		$replaceSpecialChars = array("", "-", "", "", "s", "");
+		$title = str_replace($specialChars, $replaceSpecialChars, strtolower($title));
+		return $title;
 	}
 	
 	function deletePostTags($postid)
 	{
 		$this->db->delete('relations', array('postid' => $postid));
+	}
+	
+	function updateSlug($title, $postid)
+	{
+	    $this->db->update('post', array('slug' => Post::makeTitleReadable($title)), array('id' => $postid));
 	}
     
 }

@@ -11,31 +11,37 @@
   <script type="text/javascript" src="<?=base_url();?>static/jquery.cookie.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
-	  perpage = <?=$perPage;?>;
-	  postcount = <?=$postCount;?>;
-	  if (postcount <= perpage)
-	  {
-		  $("#more").css('display', 'none');
-	  }
-	  $.cookie('page', null);
-	  $("#more").click(function() {
-		  var page = $.cookie('page') ? $.cookie('page') : 2;
-		  var limit = (page - 1)*perpage;
-		  limit = limit == 0 ? 1 : limit;
-		  $.getJSON("<?=base_url();?>posts/more/"+limit,
-			function(data){
-			$.each(data, function(i,item){
-				var result = '<div class="posttitle"><a href="<?=base_url();?>post/'+item.slug+'">'+item.title+'</a></div>';
-				result += '<div class="postdate">'+item.dateline+'</div>';
+    $('a:not([href^="http://www.mengu.net/demo"])').each(function(i) {
+        if (!$(this).attr('target'))
+        {
+            $(this).attr('target', '_blank');
+        }
+    });
+    perpage = <?=$perPage;?>;
+    postcount = <?=$postCount;?>;
+    if (postcount <= perpage)
+    {
+        $("#more").css('display', 'none');
+    }
+    $.cookie('page', null);
+    $("#more").click(function() {
+        var page = $.cookie('page') ? $.cookie('page') : 2;
+        var limit = (page - 1)*perpage;
+        limit = limit == 0 ? 1 : limit;
+        $.getJSON("<?=base_url();?>posts/more/"+limit,
+        function(data) {
+            $.each(data, function(i,item) {
+                var result = '<div class="posttitle"><a href="<?=base_url();?>post/'+item.slug+'">'+item.title+'</a></div>';
+                result += '<div class="postdate">'+item.dateline+'</div>';
 				var commentText = item.commentcount > 1 ? 'Comments' : 'Comment';
 				result += '<div class="commentinfo"><a href="<?=base_url();?>post/'+item.slug+'#comments">'+item.commentcount+' '+commentText+'</a></div>';
 				result += '<div class="description">'+item.description+'</div>';
 				result += '<div class="taglist">Tags: '+item.taglist+'</div>';
 				$("#posts").append(result);
-          });
+            });
 		});
 		$.cookie('page', parseInt(page)+1); 
-	  });
+	});
   });
   </script>
   <script>hljs.initHighlightingOnLoad();</script>

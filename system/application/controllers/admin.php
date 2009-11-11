@@ -51,9 +51,12 @@ class Admin extends Controller
 		if ($this->db->insert('post', $_POST))
 		{
 			$postId = $this->db->insert_id();
-			foreach ($taglist AS $tag)
+			if ($taglist)
 			{
-				$this->Post->saveTag($postId, $tag, $this->Post->makeTitleReadable($tag));
+			    foreach ($taglist AS $tag)
+			    {
+			        $this->Post->saveTag($postId, $tag, $this->Post->makeTitleReadable($tag));
+			    }
 			}
 			redirect(base_url()."post/".$_POST['slug']);
 		}
