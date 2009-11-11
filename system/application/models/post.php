@@ -86,6 +86,13 @@ class Post extends Model
 	
 	function getArchives()
 	{
+	    $archives = $this->db->query("SELECT DISTINCT DATE_FORMAT(dateline, '%M %Y') AS display, DATE_FORMAT(dateline, '%Y/%m') AS link FROM post")->result();
+	    $blogArchives = array();
+	    foreach ($archives AS $archive)
+	    {
+	        $blogArchives[] = array('link' => $archive->link, 'display' => $archive->display);
+	    }
+	    return $blogArchives;
 	}
 	
 	function getCommentCount($postId)
