@@ -25,6 +25,10 @@
 		<td>Body:</td>
 		<td><?= form_textarea('body', $post[0]->body);?></td>
 	</tr>
+  <tr>
+	  <td>Preview:</td>
+	  <td><?= form_textarea('preview'); ?></td>
+	</tr>
 	<tr>
 		<td></td>
 		<td><?= form_submit('', 'Create Post');?></td>

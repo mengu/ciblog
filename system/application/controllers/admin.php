@@ -105,7 +105,7 @@ class Admin extends Controller
 					$this->Post->deleteTag($_POST['id'], $postTag);
 				}
 			}*/
-			redirect(base_url()."post/".$_POST['slug']);
+			redirect(base_url()."admin/editpost/".$_POST['id']);
 		}
 	}
 	
