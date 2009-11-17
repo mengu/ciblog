@@ -9,22 +9,37 @@ body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-ser
 .commentinfo { padding-left: 10px; }
 .postcontent, .description { margin-top: 5px; margin-bottom: 25px; font-size: 12pt; }
 .postcontent a, .description a, .commentinfo a { color: #0099CC; }
+.postcontent a:hover, .description a:hover, .commentinfo a:hover { background: #533419; color: #ffffff; }
 .postcontent h2, .description h2 { font-size: 14pt; }
 .boxtitle { text-transform: uppercase; font-size: x-large; border-bottom: 1px dashed gray; margin-top: 50px; font-family: Sans-serif; }
 .boxcontent a { text-decoration: none; color: #006699; }
+.boxcontent a:hover { background: #6787B0; color: #E9E0DB; }
 #commentform { background: #DEE7EF; font-family: Verdana; }
 #commentform p, #registrationform p { padding-left: 10px; margin: 0; margin-top: 5px;}
 #commentform input, textarea { font: 14px Verdana; }
 #commentform textarea { width: 400px; height: 175px; }
 #commentform h2 { margin-left: 100px; padding-top: 15px; }
-.commentbox { background: #F6F6F6; padding: 5px; margin-bottom: 10px;}
-.commentauthor { margin-top: 10px; }
-.commentauthor, .commentbody { font: 16px Sans-serif;}
 h2 { text-transform: uppercase; font-family: Arial; border-bottom: 1px solid #DEE7EF;}
 h2 a { color: black; text-decoration: none; outline: none;}
 .result { text-transform: uppercase; font: 16pt Arial; }
 code { padding-left: 6px; padding-bottom: 10px; padding-top: 10px; margin:0; overflow: auto; font-size: 10pt; }
-.commentbox {  }
 #more { color: #ADC1D6; background: #DEE7EF; margin-left: 450px; padding: 20px; width: 450px; text-align: center; }
 #more:hover { background: #ADC1D6; color: white; cursor: pointer;}
 .taglist, .taglist a { color: #7D9C9F; margin-bottom: 25px; }
+
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+.commentbox{
+background-color: #ececec;
+width: 450px;
+padding: 10px;
+}
+
+.commentfooter{
+background: url(http://www.mengu.net/demo/static/arrow.gif) 20px 0 no-repeat; /*20px 0 equals horizontal and vertical position of arrow. Adjust as desired (ie: 20px -5px).*/
+padding-left: 58px;
+padding-top: 1px;
+margin-bottom: 2em;
+font-size: 90%;
+color: #4A4A4A;
+}

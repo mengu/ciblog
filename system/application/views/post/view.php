@@ -8,16 +8,23 @@
 	  <div class="postdate"><?=$post[0]->dateline;?></div>
 	  <div class="commentinfo"><a href="<?=base_url();?>post/<?=$post[0]->slug;?>#comments"><?= $post[0]->commentcount; ?> Comment<? if(count($post[0]->commentcount) > 1): ?>s<? endif;?></a></div>
       <div class="description"><?=markdown($post[0]->body);?></div>
+      
+      <? if ($post[0]->preview): ?>
+      <div id="preview">
+        <?= $post[0]->preview; ?>
+      </div>
+      <? endif; ?>
+      
       <div class="taglist">Tags: <?=Post::getTagList($post[0]->id);?></div>
 	  <div id="comments">
 	  <h2>Comments</h2>
 	  <? if (count($comments) > 0): ?>
 		  <? $c = 0; ?>
 		  <? foreach($comments AS $comment): ?>
-			<div class="commentbox">
-			<div class="commentauthor"><? if ($comment->website): ?><a href="<?=$comment->website;?>"><?=$comment->name;?></a><? else: ?><?=$comment->name;?><? endif; ?> said on <?=date("d F Y", $comment->dateline);?>:</div>
-			<div class="commentbody"><?=$comment->body;?></div>
-			</div>
+		  <div class="commentbox">
+        <?= $comment->body;?>
+      </div>
+      <div class="commentfooter">Posted by <?= $comment->name; ?> on <?= date("d/m/Y H:i A", $comment->dateline); ?></div>
 		  <? endforeach; ?>
 	   <? else: ?>
 			<div>No comments made for this post.</div>
