@@ -48,4 +48,18 @@
 	</div>
 	<? endif; ?>
 	
+	<? if ($this->session->userdata('isAdmin')): ?>
+	<div class="boxtitle">Comment Moderation</div>
+	<div class="boxcontent">
+	  <? foreach ($unapprovedComments AS $unapprovedComment): ?>
+	    <div class="uc" id="uc_<?=$unapprovedComment->id;?>"><?= substr($unapprovedComment->body, 0, 100); ?> by <?= $unapprovedComment->name; ?>
+	    <div>
+	      <a href="#" onclick="moderateComment(<?=$unapprovedComment->id;?>, 'approve'); return false;">Approve</a> -
+	      <a href="#" onclick="moderateComment(<?=$unapprovedComment->id;?>, 'delete'); return false;">Delete</a>
+	    </div>
+	    </div>
+	  <? endforeach; ?>
+	</div>
+	<? endif; ?>
+	
   </div>

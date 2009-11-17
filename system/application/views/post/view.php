@@ -11,7 +11,11 @@
       
       <? if ($post[0]->preview): ?>
       <div id="preview">
-        <?= $post[0]->preview; ?>
+        <h2>Preview</h2>
+        <div style="font-size: 12px">The file is located <a href="http://www.mengu.net/repo/<?=$post[0]->preview?>">here</a>.</div>
+        <iframe src ="http://www.mengu.net/repo/<?= $post[0]->preview ?>" width="100%" height="150">
+        <p>Your browser does not support iframes.</p>
+        </iframe>
       </div>
       <? endif; ?>
       

@@ -54,6 +54,36 @@ class Comments extends Controller
 		}
 	}
 	
+	function approve()
+	{
+	    if (!$this->session->userdata('isAdmin'))
+	    {
+	        return false;
+	    }
+	    else
+	    {
+	        if ($this->db->update('comment', array('approved' => 'approved'), array('id' => $_POST['id'])))
+	        {
+	            return true;
+	        }
+	    }
+	}
+	
+	function delete()
+	{
+	    if (!$this->session->userdata('isAdmin'))
+	    {
+	        return false;
+	    }
+	    else
+	    {
+	        if ($this->db->delete('comment', array('id' => $_POST['id'])))
+	        {
+	            return true;
+	        }
+	    }
+	}
+	
 	
 }
 

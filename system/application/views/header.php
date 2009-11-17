@@ -12,7 +12,7 @@
   <script type="text/javascript">
   $(document).ready(function(){
     $('a:not([href^="http://www.mengu.net/demo"])').each(function(i) {
-        if (!$(this).attr('target'))
+        if (!$(this).attr('target') && $(this).attr('href') != "#")
         {
             $(this).attr('target', '_blank');
         }
@@ -43,6 +43,14 @@
 		$.cookie('page', parseInt(page)+1); 
 	});
   });
+  function moderateComment(id, operation)
+  {
+      $.post("<?=base_url();?>comments/"+operation, { id: id },
+        function(data){
+            $("#uc_"+id).remove();
+        });
+      return false;
+  }
   </script>
   <script>hljs.initHighlightingOnLoad();</script>
   

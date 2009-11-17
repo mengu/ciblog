@@ -26,7 +26,7 @@
 	</tr>
 	<tr>
 	  <td>Preview:</td>
-	  <td><?= form_textarea('preview'); ?></td>
+	  <td><?= form_input('preview'); ?></td>
 	</tr>
 	<tr>
 		<td></td>

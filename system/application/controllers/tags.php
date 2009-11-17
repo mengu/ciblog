@@ -13,6 +13,7 @@ class Tags extends Controller
 		$this->data['allTags'] = $this->Post->getAllTags();
 		$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
 		$this->data['recentComments'] = $this->Post->getLatestComments(5);
+		$this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
 		$this->sidebar = $this->load->view('sidebar', $this->data, true);
 	}
 	

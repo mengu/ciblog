@@ -95,6 +95,12 @@ class Post extends Model
 	    return $blogArchives;
 	}
 	
+	function getUnapprovedComments($limit)
+	{
+	    $this->db->where('approved', 'unapproved');
+	    return $this->db->get('comment', $limit)->result();
+	}
+	
 	function getCommentCount($postId)
 	{
 		$this->db->where('postid', $postId);
