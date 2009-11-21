@@ -6,6 +6,15 @@
 	</form>
 	</div>
 	
+	<div class="boxtitle">About</div>
+	<div class="boxcontent">
+	    <div>Mengu, is a web developer with <a href="http://www.rubyonrails.org">Ruby on Rails</a>,
+	    <a href="http://www.djangoproject.com">Django</a>, <a href="http://www.web2py.com">web2py</a>, 
+	    <a href="http://www.codeigniter.com">CodeIgniter</a> and <a href="http://www.jquery.com">jQuery</a> 
+	    in his tool box. Available for any kind of web development jobs. 
+	    </div>
+	</div>
+	
 	<div class="boxtitle">Tag List</div>
 	<div class="boxcontent">
 		<div><?=$allTags;?></div>

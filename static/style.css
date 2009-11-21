@@ -1,16 +1,50 @@
+/** reset css.**/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+margin:0;
+padding:0;
+}
+table {
+border-collapse:collapse;
+border-spacing:0;
+}
+fieldset,img {
+border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+font-style:normal;
+font-weight:normal;
+}
+ol,ul {
+list-style:none;
+}
+caption,th {
+text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+font-size:100%;
+font-weight:normal;
+}
+q:before,q:after {
+content:'';
+}
+abbr,acronym { border:0;
+}
+
+/** end reset css. **/
+
 body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; }
-#sidebar { float: left; width: 275px; }
+#sidebar { float: left; width: 275px; margin-left: 5px;}
 #posts, #registrationform { float: left; margin-left: 100px; width: 650px; }
 .posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 375px; }
 .posttitle a { text-decoration: none; color: black; }
 .tagpost { margin-bottom: 5px; font-family: Arial; font-size: large; }
 .tagpost a { text-decoration: none; color: black; }
-.postdate, .commentinfo { display: inline; font-size: small;} 
+.postdate, .commentinfo { display: inline; font-size: small;}
 .commentinfo { padding-left: 10px; }
-.postcontent, .description { margin-top: 5px; margin-bottom: 25px; font-size: 12pt; }
+.postcontent, .description { margin-top: 5px; margin-bottom: 5px; font-size: 12pt; }
 .postcontent a, .description a, .commentinfo a { color: #0099CC; }
 .postcontent a:hover, .description a:hover, .commentinfo a:hover { background: #533419; color: #ffffff; }
-.postcontent h2, .description h2 { font-size: 14pt; }
+.postcontent h2, .description h2 { font-size: 16px; text-transform: uppercase; font-weight: bold; margin-bottom: 5px; }
 .boxtitle { text-transform: uppercase; font-size: x-large; border-bottom: 1px dashed gray; margin-top: 50px; font-family: Sans-serif; }
 .boxcontent a { text-decoration: none; color: #006699; }
 .boxcontent a:hover { background: #2088B2; color: #FFFFFF; }
@@ -26,8 +60,11 @@ code { padding-left: 6px; padding-bottom: 10px; padding-top: 10px; margin:0; ove
 #more { color: #ADC1D6; background: #DEE7EF; margin-left: 450px; padding: 20px; width: 450px; text-align: center; }
 #more:hover { background: #ADC1D6; color: white; cursor: pointer;}
 .taglist, .taglist a { color: #7D9C9F; margin-bottom: 25px; }
-
+p { padding-bottom: 10px; }
 #preview { width: 400px; overflow: auto; }
+pre { padding-bottom: 10px; }
+.rest { background: #C87533; text-transform: uppercase; font-size: 14px; width: 125px; padding: 5px; margin-bottom: 15px; }
+.rest a { color: #fff; text-decoration: none; outline: none;}
 
 /*Credits: Dynamic Drive CSS Library */
 /*URL: http://www.dynamicdrive.com/style/ */
@@ -48,3 +85,4 @@ color: #4A4A4A;
 
 .uc { background: #3399FF; padding: 5px; }
 .uc:hover { background: #2088B2; }
+

@@ -9,14 +9,18 @@
   <script src="<?=base_url();?>static/highlight.pack.js"></script>
   <script type="text/javascript" src="<?=base_url();?>static/jquery-1.3.2.min.js"></script>
   <script type="text/javascript" src="<?=base_url();?>static/jquery.cookie.js"></script>
+  <script type="text/javascript" src="<?=base_url();?>static/jquery.corner.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
+    $('img').css({'width': '400px', 'max-width': '400px', 'cursor': 'pointer'}).click(function() { window.open(this.src); });
     $('a:not([href^="http://www.mengu.net/demo"])').each(function(i) {
         if (!$(this).attr('target') && $(this).attr('href') != "#")
         {
             $(this).attr('target', '_blank');
         }
     });
+    $(".description a").corner("5px").css('padding', '3px');
+    $(".rest").corner("bevel tr br");
     perpage = <?=$perPage;?>;
     postcount = <?=$postCount;?>;
     if (postcount <= perpage)
@@ -40,7 +44,7 @@
 				$("#posts").append(result);
             });
 		});
-		$.cookie('page', parseInt(page)+1); 
+		$.cookie('page', parseInt(page)+1);
 	});
   });
   function moderateComment(id, operation)
@@ -53,9 +57,10 @@
   }
   </script>
   <script>hljs.initHighlightingOnLoad();</script>
-  
+
 </head>
 <body>
 
-<h2 style="margin: 0; border: 0; font-size:40pt;"><a href="<?=base_url();?>">Mengu.net</a></h2>
-<div>mengu's weblog on web programming.</div>
+<h2 style="margin: 0; margin-left: 5px; border: 0; font-size:60px; font-weight: bold;"><a href="<?=base_url();?>">Mengu.net</a></h2>
+<div style="margin-left: 5px;">mengu's weblog on web programming.</div>
+
