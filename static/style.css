@@ -1,5 +1,5 @@
 /** reset css.**/
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+body,div,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
 margin:0;
 padding:0;
 }
@@ -10,13 +10,13 @@ border-spacing:0;
 fieldset,img {
 border:0;
 }
-address,caption,cite,code,dfn,em,strong,th,var {
+address,caption,cite,code,dfn,em,th,var {
 font-style:normal;
 font-weight:normal;
 }
-ol,ul {
+/*ol,ul {
 list-style:none;
-}
+}*/
 caption,th {
 text-align:left;
 }
@@ -34,7 +34,7 @@ abbr,acronym { border:0;
 
 body { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; }
 #sidebar { float: left; width: 275px; margin-left: 5px;}
-#posts, #registrationform { float: left; margin-left: 100px; width: 650px; }
+#posts, #registrationform { float: left; margin-left: 100px; width: 750px; }
 .posttitle { text-transform: uppercase; font-family: Arial; font-weight: bold; font-size: xx-large; width: 375px; }
 .posttitle a { text-decoration: none; color: black; }
 .tagpost { margin-bottom: 5px; font-family: Arial; font-size: large; }

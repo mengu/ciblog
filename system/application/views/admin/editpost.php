@@ -6,7 +6,7 @@
 	<? endforeach; ?>
 </tr>
 </table>
-<?= form_open('admin/test'); ?>
+<?= form_open('admin/updatepost'); ?>
 <?= form_hidden('id', $post[0]->id); ?>
 <table cellpadding="6" cellspacing="1" width="100%">
 	<tr>

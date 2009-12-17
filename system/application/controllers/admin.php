@@ -9,7 +9,7 @@ class Admin extends Controller
 		$this->user = $this->session->userdata('user');
 		if ($this->user['group'] != 'admin')
 		{
-			die("You don't have access to this area.");
+			die("You don't have access to this area. Want to <a href=\"".base_url()."users/login\">login?</a>");
 		}
 		$this->subMenus = array(
 			'post' => array(
@@ -155,15 +155,6 @@ class Admin extends Controller
 		}
 	}
 
-	function test()
-	{
-	    echo "GET<pre>";
-	    var_dump($_GET);
-	    echo "</pre><br/>POST<pre>";
-	    var_dump($_POST);
-	    echo "</pre>";
-	}
 }
 
 ?>
-

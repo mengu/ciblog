@@ -22,11 +22,11 @@ class Archives extends Controller
         $month = $this->uri->segment(4);
         if ($month)
         {
-            $this->db->like('dateline', $year, 'after');
+            $this->db->like('dateline', "$year-$month", 'after');
         }
         else
         {
-            $this->db->like('dateline', "$year/$month", 'after');
+            $this->db->like('dateline', "$year", 'after');
         }
         $this->db->order_by('post.id', 'desc');
         $this->db->select('slug, title');

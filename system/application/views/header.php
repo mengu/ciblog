@@ -63,4 +63,3 @@
 
 <h2 style="margin: 0; margin-left: 5px; border: 0; font-size:60px; font-weight: bold;"><a href="<?=base_url();?>">Mengu.net</a></h2>
 <div style="margin-left: 5px;">mengu's weblog on web programming.</div>
-

@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -34,7 +34,7 @@ class Posts extends Controller
         $data['posts'] = $this->db->get('post', 5)->result();
         $this->load->view('post/index', $data);
     }
-    
+
     function view()
     {
         if ($this->session->userdata('user'))
@@ -46,10 +46,13 @@ class Posts extends Controller
         $data['error'] = false;
         $data['sidebar'] = $this->sidebar;
         $data['post'] = $this->db->get_where('post', array('slug' => $this->uri->segment(2)))->result();
-        $data['comments'] = $this->db->get_where('comment', array('postid' => $data['post'][0]->id, 'approved' => 'approved'))->result();
+        if ($data['post'])
+        {
+            $data['comments'] = $this->db->get_where('comment', array('postid' => $data['post'][0]->id, 'approved' => 'approved'))->result();
+        }
         $this->load->view('post/view', $data);
     }
-    
+
     function search()
     {
         $search = "SELECT post.id, post.title FROM post WHERE post.body
@@ -60,7 +63,7 @@ class Posts extends Controller
         $data['header'] = $this->header;
         $this->load->view('post/search', $data);
     }
-	
+
     function more()
     {
         $offset = $this->uri->segment(3);
@@ -72,6 +75,7 @@ class Posts extends Controller
         $postList = $this->db->get('post', 5, $offset)->result_array();
         foreach ($postList AS $key => $post)
         {
+                $postList[$key]['description'] = markdown($postList[$key]['description']);
                 $postList[$key]['commentcount'] = $this->Post->getCommentCount($postList[$key]['id']);
                 $postList[$key]['taglist'] = $this->Post->getTagList($postList[$key]['id']);
         }
