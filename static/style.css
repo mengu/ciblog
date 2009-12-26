@@ -65,7 +65,7 @@ p { padding-bottom: 10px; }
 pre { padding-bottom: 10px; }
 .rest { background: #C87533; text-transform: uppercase; font-size: 14px; width: 125px; padding: 5px; margin-bottom: 15px; }
 .rest a { color: #fff; text-decoration: none; outline: none;}
-
+h2 { font-size: 22px; font-weight: bold; }
 /*Credits: Dynamic Drive CSS Library */
 /*URL: http://www.dynamicdrive.com/style/ */
 .commentbox{
