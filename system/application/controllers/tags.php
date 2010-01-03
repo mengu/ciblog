@@ -16,13 +16,14 @@ class Tags extends Controller
 		$this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
 		$this->sidebar = $this->load->view('sidebar', $this->data, true);
 	}
-	
+
 	function tag()
 	{
 		$tag = $this->uri->segment(2);
 		$tagInfo = $this->db->query("SELECT tag FROM relations WHERE tagslug = '$tag'")->result();
 		$this->db->join('post', "post.id = relations.postid");
 		$this->db->order_by('post.id', 'desc');
+		$this->db->where('published', '1');
 		$data['posts'] = $this->db->get_where('relations', array('tagslug' => strtolower($tag)))->result();
 		$data['header'] = $this->header;
 		$data['sidebar'] = $this->sidebar;

@@ -20,20 +20,15 @@ class Archives extends Controller
     {
         $year = $this->uri->segment(3);
         $month = $this->uri->segment(4);
-        if ($month)
-        {
-            $this->db->like('dateline', "$year-$month", 'after');
-        }
-        else
-        {
-            $this->db->like('dateline', "$year", 'after');
-        }
+        $day = $this->uri->segment(5);
+        $like = $year.($month?"-$month":"").($day?"-$day":"");
+        $this->db->like('dateline', $like, 'after');
         $this->db->order_by('post.id', 'desc');
         $this->db->select('slug, title');
         $data['archives'] = $this->db->get('post')->result();
         $data['header'] = $this->header;
         $data['sidebar'] = $this->sidebar;
-        $data['archiveDate'] = ($month ? "$year/$month" : $year);
+        $data['archiveDate'] = $year.($month?"/$month":"").($day?"/$day":"");
         $this->load->view('archives/view', $data);
     }
 

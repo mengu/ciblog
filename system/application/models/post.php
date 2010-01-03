@@ -48,7 +48,7 @@ class Post extends Model
 		$postTags = array();
 		foreach ($tagList AS $tag)
 		{
-			$postTags[] = $tag->tagslug;
+			$postTags[$tag->id] = $tag->tagslug;
 		}
 		return $postTags;
 	}
@@ -72,9 +72,14 @@ class Post extends Model
 		$this->db->delete('relations', array('postid' => $postId, 'tagslug' => $tagslug));
 	}
 
+	function deleteAllTags($postId)
+	{
+	    $this->db->delete('relations', array('postid' => $postId));
+	}
+
 	function getAllTags()
 	{
-		$sql = "SELECT DISTINCT(tagslug), tag FROM relations";
+		$sql = "SELECT DISTINCT(tagslug), tag FROM relations ORDER BY id DESC";
 		$tagList = $this->db->query($sql)->result();
 		$allTags = array();
 		foreach ($tagList AS $tag)

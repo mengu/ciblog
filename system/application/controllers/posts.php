@@ -30,6 +30,7 @@ class Posts extends Controller
     {
         $data['header'] = $this->header;
         $data['sidebar'] = $this->sidebar;
+        $this->db->where('published', '1');
         $this->db->order_by('id', 'DESC');
         $data['posts'] = $this->db->get('post', 5)->result();
         $this->load->view('post/index', $data);
@@ -71,6 +72,7 @@ class Posts extends Controller
         {
                 return false;
         }
+        $this->db->where('published', '1');
         $this->db->order_by('id', 'DESC');
         $postList = $this->db->get('post', 5, $offset)->result_array();
         foreach ($postList AS $key => $post)

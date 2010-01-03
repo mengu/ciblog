@@ -25,6 +25,11 @@
 		<td>Body:</td>
 		<td><?= form_textarea('body', $post[0]->body);?></td>
 	</tr>
+	<tr>
+	    <td>Published?</td>
+	    <td><?= form_radio('published', 1, ($post[0]->published == 1 ? true : false));?> Yes
+	    <?= form_radio('published', 0, ($post[0]->published == 0 ? true : false));?> No</td>
+    </tr>
   <tr>
 	  <td>Preview:</td>
 	  <td><?= form_input('preview', $post[0]->preview); ?></td>
@@ -38,4 +43,3 @@
 
 </body>
 </html>
-
