@@ -43,6 +43,7 @@
 				result += '<div class="commentinfo"><a href="<?=base_url();?>post/'+item.slug+'#comments">'+item.commentcount+' '+commentText+'</a></div>';
 				result += '<div class="description">'+item.description+'</div>';
 				result += '<div class="taglist">Tags: '+item.taglist+'</div>';
+				result += '<div class="rest"><a href="<?=base_url();?>post/'+item.slug+'">Read the rest..</a></div>';
 				$("#posts").append(result);
             });
 		});
