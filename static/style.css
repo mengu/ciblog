@@ -48,7 +48,7 @@ color:#09C;
 }
 
 .postcontent a:hover,.description a:hover,.commentinfo a:hover {
-background:#a20000;
+background:/*#a20000;*/#B22222;
 color:#fff;
 }
 
@@ -63,7 +63,7 @@ margin-bottom:5px;
 text-transform:uppercase;
 font-size:x-large;
 border-bottom:1px dashed gray;
-margin-top:20px;
+margin-top:15px;
 font-family:Sans-serif;
 }
 
@@ -73,7 +73,7 @@ color:#069;
 }
 
 .boxcontent a:hover {
-background:#2088B2;
+background:/*#2088B2;*/#B22222 ;
 color:#FFF;
 }
 
@@ -148,6 +148,10 @@ cursor:pointer;
 color:#7D9C9F;
 margin-bottom:25px;
 }
+.taglist a:hover
+{
+    background: #d2d2d2;
+}
 
 #preview {
 width:400px;
@@ -191,5 +195,6 @@ color:#4A4A4A;
 .posttitle a,.tagpost a {
 text-decoration:none;
 color:#000;
+outline: none;
 }
 
