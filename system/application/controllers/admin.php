@@ -81,30 +81,41 @@ class Admin extends Controller
 
 	function updatepost()
 	{
-		$tagSlugList = explode(", ", $this->Post->makeTitleReadable($_POST['tags']));
+		$tagSlugList = explode(", ", $_POST['tags']);
+		foreach ($tagSlugList AS $tagKey => $tagSlug)
+        {
+            $tagSlugList[$tagKey] = $this->Post->makeTitleReadable($tagSlug);
+		}
 		$tagList = explode(", ", $_POST['tags']);
 		unset($_POST['tags']);
 		$_POST['slug'] = $this->Post->makeTitleReadable($_POST['title']);
 		if ($this->db->update('post', $_POST, array('id' => $_POST['id'])))
 		{
-			$postTagList = $this->Post->getPostTags($_POST['id']);
-			foreach ($tagList AS $tag)
-			{
-				$tagslug = $this->Post->makeTitleReadable($tag);
-				// if post doesn't have this tag, save it.
-				if (!$this->Post->postHasTag($_POST['id'], $tagslug))
-				{
-					$this->Post->saveTag($_POST['id'], $tag, $tagslug);
-				}
-			}
-			/*foreach ($postTagList AS $postTag)
-			{
-				// if tag in database isn't posted, delete it.
-				if (!in_array($postTag, $tagSlugList))
-				{
-					$this->Post->deleteTag($_POST['id'], $postTag);
-				}
-			}*/
+		    if ($tagList)
+	        {
+	            $postTagList = $this->Post->getPostTags($_POST['id']);
+			    foreach ($tagList AS $tag)
+			    {
+				    $tagslug = $this->Post->makeTitleReadable($tag);
+				    // if post doesn't have this tag, save it.
+				    if (!$this->Post->postHasTag($_POST['id'], $tagslug))
+				    {
+					    $this->Post->saveTag($_POST['id'], $tag, $tagslug);
+				    }
+			    }
+			    foreach ($postTagList AS $postTag)
+			    {
+				    // if tag in database isn't posted, delete it.
+				    if (!in_array($postTag, $tagSlugList))
+				    {
+					    $this->Post->deleteTag($_POST['id'], $postTag);
+				    }
+			    }
+	        }
+	        else
+	        {
+	            $this->Post->deleteAllTags($_POST['id']);
+	        }
 			redirect(base_url()."admin/editpost/".$_POST['id']);
 		}
 	}
