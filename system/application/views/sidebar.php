@@ -1,8 +1,9 @@
+<div id="" class="grid_3" style="margin:0; padding:0;">
 <div id="sidebar">
 	<div class="boxtitle" style="margin: 0;">Search The Blog</div>
 	<div class="boxcontent">
 	<?= form_open('posts/search');?>
-	<input type="text" name="query" /> <input type="submit" value="Search" />
+	<input type="text" name="query" id="searchQuery" /> <input id="searchButton" type="submit" value="Search" />
 	</form>
 	</div>
 
@@ -30,7 +31,7 @@
 	<div class="boxtitle">Recent Comments</div>
 	<div class="boxcontent">
 	<? foreach ($recentComments AS $recentComment): ?>
-		<div>On <a href="<?=base_url();?>post/<?=$recentComment->slug;?>"><?=$recentComment->title;?></a> by <?=$recentComment->name;?></div>
+		<div><a href="<?=base_url();?>post/<?=$recentComment->slug;?>"><?=$recentComment->title;?></a></div>
 	<? endforeach; ?>
 	</div>
 
@@ -61,18 +62,5 @@
 	</div>
 	<? endif; ?>
 
-	<? if ($this->session->userdata('isAdmin')): ?>
-	<div class="boxtitle">Comment Moderation</div>
-	<div class="boxcontent">
-	  <? foreach ($unapprovedComments AS $unapprovedComment): ?>
-	    <div class="uc" id="uc_<?=$unapprovedComment->id;?>"><?= substr($unapprovedComment->body, 0, 100); ?> by <?= $unapprovedComment->name; ?>
-	    <div>
-	      <a href="#" onclick="moderateComment(<?=$unapprovedComment->id;?>, 'approve'); return false;">Approve</a> -
-	      <a href="#" onclick="moderateComment(<?=$unapprovedComment->id;?>, 'delete'); return false;">Delete</a>
-	    </div>
-	    </div>
-	  <? endforeach; ?>
-	</div>
-	<? endif; ?>
-
+  </div>
   </div>

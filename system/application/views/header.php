@@ -3,6 +3,9 @@
 <head>
   <title>Mengu.net </title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>static/reset.css" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>static/960.css" />
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>static/text.css" />
   <link rel="stylesheet" type="text/css" href="<?=base_url();?>static/style.css" />
   <link rel="stylesheet" title="GitHub" type="text/css" href="<?=base_url();?>static/github.css" />
   <script src="<?=base_url();?>static/highlight.js"></script>
@@ -13,13 +16,12 @@
   <script type="text/javascript">
   $(document).ready(function(){
     $('img').css({'width': '400px', 'max-width': '400px', 'cursor': 'pointer'}).click(function() { window.open(this.src); });
-    $('a:not([href^="http://www.mengu.net/demo"])').each(function(i) {
+    $('a:not([href^="http://localhost/ciblog/"])').each(function(i) {
         if (!$(this).attr('target') && $(this).attr('href') != "#")
         {
             $(this).attr('target', '_blank');
         }
     });
-    $(".description a").corner("5px").css('padding', '3px');
     $(".rest").corner("bevel tr br");
     perpage = <?=$perPage;?>;
     postcount = <?=$postCount;?>;
@@ -47,19 +49,22 @@
 		$.cookie('page', parseInt(page)+1);
 	});
   });
-  function moderateComment(id, operation)
-  {
-      $.post("<?=base_url();?>comments/"+operation, { id: id },
-        function(data){
-            $("#uc_"+id).remove();
-        });
-      return false;
-  }
+  $("#searchButton").click(function() {
+     if ($("#searchQuery").val().length < 3)
+     {
+        alert("I'd prefer something with or longer than 3 characters.");
+     }
+  });
   </script>
   <script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 <body>
 
-<h2 style="margin: 0; margin-left: 5px; border: 0; font-size:60px; font-weight: bold;"><a href="<?=base_url();?>">Mengu.net</a></h2>
-<div style="margin-left: 5px;">mengu's weblog on web programming.</div>
+
+<div id="header" class="container_15" style="margin:0; padding:0;">
+<h1 style="text-transform: uppercase; font-size: 4.5em; font-weight: bold;"><a href="<?=base_url();?>" style="text-decoration: none; color: #000;">Mengu.net</a></h1>
+    <div>mengu's weblog on web programming.</div>
+</div>
+
+<div id="content" class="container_15">

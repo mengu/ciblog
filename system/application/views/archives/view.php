@@ -1,5 +1,5 @@
 <?= $header; ?>
-
+<div id="" class="grid_12">
 <div style="margin-top: 50px;">
   <?= $sidebar; ?>
 
@@ -13,6 +13,7 @@
   <div style="clear: both;"></div>
   </div>
 
+</div>
 </div>
 
 </body>
