@@ -21,5 +21,4 @@
 
 </div>
 
-</body>
-</html>
+<?= $footer; ?>

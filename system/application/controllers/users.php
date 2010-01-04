@@ -8,6 +8,7 @@ class Users extends Controller
         $this->load->model('Post');
         $this->load->model('User');
         $this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0), true);
+        $this->footer = $this->load->view('footer', false, true);
         $this->data['allTags'] = $this->Post->getAllTags();
         $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
         $this->data['recentComments'] = $this->Post->getLatestComments(5);
@@ -18,7 +19,7 @@ class Users extends Controller
 
     function register()
     {
-        $data = array('header' => $this->header, 'sidebar' => $this->sidebar, 'errors' => false);
+        $data = array('header' => $this->header, 'footer' => $this->footer, 'sidebar' => $this->sidebar, 'errors' => false);
         $this->load->view('users/register', $data);
     }
 
@@ -37,7 +38,7 @@ class Users extends Controller
         else
         {
                 $errors = "Please fill all the fields.";
-                $data = array('header' => $this->header, 'sidebar' => $this->sidebar, 'errors' => $errors);
+                $data = array('header' => $this->header, 'footer' => $this->footer, 'sidebar' => $this->sidebar, 'errors' => $errors);
                 $this->load->view('users/register', $data);
         }
     }
@@ -68,13 +69,13 @@ class Users extends Controller
                 }
                 if (!empty($errors))
                 {
-                        $data = array('header' => $this->header, 'sidebar' => $this->sidebar, 'errors' => $errors);
+                        $data = array('header' => $this->header, 'footer' => $this->footer, 'sidebar' => $this->sidebar, 'errors' => $errors);
                         $this->load->view('users/login', $data);
                 }
         }
         else
         {
-                $data = array('header' => $this->header, 'sidebar' => $this->sidebar, 'errors' => false);
+                $data = array('header' => $this->header, 'footer' => $this->footer, 'sidebar' => $this->sidebar, 'errors' => false);
                 $this->load->view('users/login', $data);
         }
     }
@@ -95,7 +96,7 @@ class Users extends Controller
 
     function newpassword()
     {
-            $data = array('header' => $this->header, 'sidebar' => $this->sidebar, 'errors' => false);
+            $data = array('header' => $this->header, 'footer' => $this->footer, 'sidebar' => $this->sidebar, 'errors' => false);
             $this->load->view('users/newpassword', $data);
     }
 

@@ -16,7 +16,7 @@
   <script type="text/javascript">
   $(document).ready(function(){
     $('img').css({'width': '400px', 'max-width': '400px', 'cursor': 'pointer'}).click(function() { window.open(this.src); });
-    $('a:not([href^="http://localhost/ciblog/"])').each(function(i) {
+    $('a:not([href^="http://www.mengu.net/"])').each(function(i) {
         if (!$(this).attr('target') && $(this).attr('href') != "#")
         {
             $(this).attr('target', '_blank');

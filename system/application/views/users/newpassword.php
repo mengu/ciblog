@@ -19,5 +19,4 @@
 
 </div>
 
-</body>
-</html>
+<?= $footer; ?>

@@ -18,6 +18,7 @@ class Posts extends Controller
         $this->load->helper('markdown');
         $this->postCount = $this->db->count_all('post');
         $this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5), true);
+        $this->footer = $this->load->view('footer', false, true);
         $this->data['blogArchives'] = $this->Post->getArchives();
         $this->data['allTags'] = $this->Post->getAllTags();
         $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
@@ -30,6 +31,7 @@ class Posts extends Controller
     {
         $data['header'] = $this->header;
         $data['sidebar'] = $this->sidebar;
+        $data['footer'] = $this->footer;
         $this->db->where('published', '1');
         $this->db->order_by('id', 'DESC');
         $data['posts'] = $this->db->get('post', 5)->result();
@@ -46,6 +48,7 @@ class Posts extends Controller
         $data['header'] = $this->header;
         $data['error'] = false;
         $data['sidebar'] = $this->sidebar;
+        $data['footer'] = $this->footer;
         $data['post'] = $this->db->get_where('post', array('slug' => $this->uri->segment(2)))->result();
         if ($data['post'])
         {
@@ -62,6 +65,7 @@ class Posts extends Controller
         $data['posts'] = $this->db->query($search)->result();
         $data['sidebar'] = $this->sidebar;
         $data['header'] = $this->header;
+        $data['footer'] = $this->footer;
         $this->load->view('post/search', $data);
     }
 
