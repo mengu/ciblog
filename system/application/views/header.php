@@ -15,7 +15,7 @@
   <script type="text/javascript" src="<?=base_url();?>static/jquery.corner.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
-    $('img:not[class="more"]').css({'width': '400px', 'max-width': '400px', 'cursor': 'pointer'}).click(function() { window.open(this.src); });
+    $('img:not([class="more"])').css({'width': '400px', 'max-width': '400px', 'cursor': 'pointer'}).click(function() { window.open(this.src); });
     $('a:not([href^="http://www.mengu.net/"])').each(function(i) {
         if (!$(this).attr('target') && $(this).attr('href') != "#")
         {
