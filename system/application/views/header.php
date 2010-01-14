@@ -15,7 +15,7 @@
   <script type="text/javascript" src="<?=base_url();?>static/jquery.corner.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
-    $('img').css({'width': '400px', 'max-width': '400px', 'cursor': 'pointer'}).click(function() { window.open(this.src); });
+    $('img:not[class="more"]').css({'width': '400px', 'max-width': '400px', 'cursor': 'pointer'}).click(function() { window.open(this.src); });
     $('a:not([href^="http://www.mengu.net/"])').each(function(i) {
         if (!$(this).attr('target') && $(this).attr('href') != "#")
         {
@@ -43,7 +43,7 @@
 				result += '<div class="commentinfo"><a href="<?=base_url();?>post/'+item.slug+'#comments">'+item.commentcount+' '+commentText+'</a></div>';
 				result += '<div class="description">'+item.description+'</div>';
 				result += '<div class="taglist">Tags: '+item.taglist+'</div>';
-				result += '<div class="rest"><a href="<?=base_url();?>post/'+item.slug+'">Read the rest..</a></div>';
+				result += '<div><a href="<?=base_url();?>post/'+item.slug+'"><img class="more" style="outline: none;" src="static/readmore.png" border="0"></a></div>';
 				$("#posts").append(result);
             });
 		});

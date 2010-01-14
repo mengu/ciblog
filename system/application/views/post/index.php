@@ -13,7 +13,7 @@
       <div class="description"><?=markdown($post->description);?></div>
       <div class="taglist">Tags: <?=Post::getTagList($post->id);?></div>
 
-      <div class="rest"><a href="<?=base_url();?>post/<?=$post->slug;?>">Read the rest..</a></div>
+      <div><a href="<?=base_url();?>post/<?=$post->slug;?>"><img class="more" style="outline: none;" src="static/readmore.png" border="0"></a></div>
 
       <!--div class="taglist">Tags: </div-->
     <? endforeach; ?>
