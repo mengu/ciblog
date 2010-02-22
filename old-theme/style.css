@@ -1,0 +1,200 @@
+body {
+font-family:"Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
+}
+
+#sidebar {
+float:left;
+width:275px;
+margin-left:5px;
+}
+
+#posts,#registrationform {
+float:left;
+margin-left:100px;
+width:750px;
+}
+
+.posttitle {
+text-transform:uppercase;
+font-family:Arial;
+font-weight:700;
+font-size:xx-large;
+width:375px;
+}
+
+.tagpost {
+margin-bottom:5px;
+font-family:Arial;
+font-size:large;
+}
+
+.postdate,.commentinfo {
+display:inline;
+font-size:small;
+}
+
+.commentinfo {
+padding-left:10px;
+}
+
+.postcontent,.description {
+margin-top:5px;
+margin-bottom:5px;
+font-size:12pt;
+}
+
+.postcontent a,.description a,.commentinfo a {
+color:#09C;
+}
+
+.postcontent a:hover,.description a:hover,.commentinfo a:hover {
+background:/*#a20000;*/#B22222;
+color:#fff;
+}
+
+.postcontent h2,.description h2 {
+font-size:16px;
+text-transform:uppercase;
+font-weight:700;
+margin-bottom:5px;
+}
+
+.boxtitle {
+text-transform:uppercase;
+font-size:x-large;
+border-bottom:1px dashed gray;
+margin-top:15px;
+font-family:Sans-serif;
+}
+
+.boxcontent a {
+text-decoration:none;
+color:#069;
+}
+
+.boxcontent a:hover {
+background:/*#2088B2;*/#B22222 ;
+color:#FFF;
+}
+
+#commentform {
+background:#DEE7EF;
+font-family:Verdana;
+}
+
+#commentform p,#registrationform p {
+padding-left:10px;
+margin:5px 0 0;
+}
+
+#commentform input,textarea {
+font:14px Verdana;
+}
+
+#commentform textarea {
+width:400px;
+height:175px;
+}
+
+#commentform h2 {
+margin-left:100px;
+padding-top:15px;
+}
+
+h2 {
+text-transform:uppercase;
+font-family:Arial;
+border-bottom:1px solid #DEE7EF;
+font-size:22px;
+font-weight:700;
+}
+
+h2 a {
+color:#000;
+text-decoration:none;
+outline:none;
+}
+
+.result {
+text-transform:uppercase;
+font:16pt Arial;
+}
+
+code {
+padding-left:6px;
+padding-bottom:10px;
+padding-top:10px;
+overflow:auto;
+font-size:10pt;
+margin:0;
+}
+
+#more {
+color:#ADC1D6;
+background:#DEE7EF;
+margin-left:450px;
+width:450px;
+text-align:center;
+padding:20px;
+}
+
+#more:hover {
+background:#ADC1D6;
+color:#FFF;
+cursor:pointer;
+}
+
+.taglist,.taglist a {
+color:#7D9C9F;
+margin-bottom:25px;
+}
+.taglist a:hover
+{
+    background: #d2d2d2;
+}
+
+#preview {
+width:400px;
+overflow:auto;
+}
+
+pre {
+padding-bottom:10px;
+}
+
+.rest {
+background:#C87533;
+text-transform:uppercase;
+font-size:14px;
+width:125px;
+margin-bottom:15px;
+padding:5px;
+}
+
+.rest a {
+color:#fff;
+text-decoration:none;
+outline:none;
+}
+
+.commentbox {
+background-color:#ececec;
+width:450px;
+padding:10px;
+}
+
+.commentfooter {
+background:url(http://www.mengu.net/demo/static/arrow.gif) 20px 0 no-repeat;
+padding-left:58px;
+padding-top:1px;
+margin-bottom:2em;
+font-size:90%;
+color:#4A4A4A;
+}
+
+.posttitle a,.tagpost a {
+text-decoration:none;
+color:#000;
+outline: none;
+}
+

@@ -7,7 +7,7 @@ class Users extends Controller
         parent::Controller();
         $this->load->model('Post');
         $this->load->model('User');
-        $this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0), true);
+        $this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0, 'current' => "", 'title' => false, 'keywords' => Post::getAllTags(true)), true);
         $this->footer = $this->load->view('footer', false, true);
         $this->data['allTags'] = $this->Post->getAllTags();
         $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
@@ -111,8 +111,8 @@ class Users extends Controller
                     redirect(base_url());
             }
     }
-	
-	
+
+
 }
 
 

@@ -8,6 +8,8 @@
   <style>
   td { padding-left: 5px; }
   #subtable a { color: black; }
+  input[type="text"] { }
+  textarea { font-family: Verdana; }
   </style>
 </head>
 <body>

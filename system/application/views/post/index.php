@@ -1,28 +1,24 @@
 <?= $header; ?>
 
-<div id="" class="grid_12">
-<div style="margin-top: 50px;">
-  <?= $sidebar; ?>
+<div class="page">
+    <div class="line">
+        <div class="unit size2of3">
 
-  <div id="posts">
-    <? foreach ($posts AS $post): ?>
-    <? /*Post::updateSlug($post->title, $post->id); */ ?>
-      <div class="posttitle"><a href="<?=base_url();?>post/<?=$post->slug;?>"><?=$post->title;?></a></div>
-	  <div class="postdate"><?=$post->dateline;?></div>
-	  <div class="commentinfo"><a href="<?=base_url();?>post/<?=$post->slug;?>#comments"><?=$post->commentcount;?> Comment<? if(count($post->commentcount) > 1): ?>s<? endif;?></a></div>
-      <div class="description"><?=markdown($post->description);?></div>
-      <div class="taglist">Tags: <?=Post::getTagList($post->id);?></div>
-
-      <div><a href="<?=base_url();?>post/<?=$post->slug;?>"><img class="more" style="outline: none;" src="static/readmore.png" border="0"></a></div>
-
-      <!--div class="taglist">Tags: </div-->
-    <? endforeach; ?>
-  </div>
-
-  <div style="clear: both;"></div>
-  <div id="more">more</div>
-
+            <div id="posts">
+            <? foreach ($posts AS $post): ?>
+                <div class="post">
+                    <h1 class="post-title"><a href="<?=base_url();?>post/<?=$post->slug;?>"><?=$post->title;?></a></h1>
+                    <div class="post-info"><?=$post->dateline;?> | <a href="<?=base_url();?>post/<?=$post->slug;?>#comments"><?=$post->commentcount;?> Comment<? if($post->commentcount > 1): ?>s<? endif;?></a></div>
+                    <div class="post-body"><?=markdown($post->description);?></div>
+                    <div class="tag-list">Tags: <?=Post::getTagList($post->id);?></div>
+                </div>
+            <? endforeach; ?>
+            </div>
+            <div id="more">more</div>
+        </div>
+<?= $sidebar; ?>
+    </div>
 </div>
-</div>
+
 
 <?= $footer; ?>

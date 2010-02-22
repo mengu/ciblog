@@ -7,8 +7,8 @@ class Archives extends Controller
         parent::Controller();
         $this->load->model('Post');
         $this->postCount = $this->db->count_all('post');
-        $this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5), true);
-        $this-footer = $this->load->view('footer', false, true);
+        $this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => "", 'title' => "Mengu.net - Archives", 'keywords' => Post::getAllTags(true)), true);
+        $this->footer = $this->load->view('footer', false, true);
         $this->data['allTags'] = $this->Post->getAllTags();
         $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
         $this->data['recentComments'] = $this->Post->getLatestComments(5);
@@ -26,6 +26,7 @@ class Archives extends Controller
         $this->db->like('dateline', $like, 'after');
         $this->db->order_by('post.id', 'desc');
         $this->db->select('slug, title');
+        $this->db->where('published', '1');
         $data['archives'] = $this->db->get('post')->result();
         $data['header'] = $this->header;
         $data['sidebar'] = $this->sidebar;

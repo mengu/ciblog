@@ -7,6 +7,15 @@ class Comments extends Controller
 		parent::Controller();
 		$this->load->model('Post');
 		$this->load->helper('markdown');
+        $this->postCount = $this->db->count_all('post');
+        $this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5), true);
+        $this->footer = $this->load->view('footer', false, true);
+        $this->data['blogArchives'] = $this->Post->getArchives();
+        $this->data['allTags'] = $this->Post->getAllTags();
+        $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
+        $this->data['recentComments'] = $this->Post->getLatestComments(5);
+        $this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
+        $this->sidebar = $this->load->view('sidebar', $this->data, true);
 	}
 	
 	function create()
@@ -16,6 +25,7 @@ class Comments extends Controller
 		{
 			if (!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['body']))
 			{
+                $POST['body'] = htmlspecialchars($_POST['body']);
 				if ($this->db->insert('comment', $_POST))
 				{
 					$commentCount = $this->Post->getCommentCount($_POST['postid']);
@@ -27,14 +37,15 @@ class Comments extends Controller
 			else
 			{
 				$this->postCount = $this->db->count_all('post');
-				$data['header'] = $this->load->view('header', array('postCount' => 0, 'perPage' => 0), true);
-				$this->data['allTags'] = $this->Post->getAllTags();
-				$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
-				$this->data['recentComments'] = $this->Post->getLatestComments(5);
-				$data['post'] = $this->db->get_where('post', array('id' => $_POST['postid']))->result();
-				$data['comments'] = $this->db->get_where('comment', array('postid' => $_POST['postid'], 'approved' => 'approved'))->result();
-				$data['sidebar'] = $this->load->view('sidebar', $this->data, true);
-				$data['error'] = "Please enter your name, email and comment.";
+                $data['header'] = $this->header;
+                $data['sidebar'] = $this->sidebar;
+                $data['footer'] = $this->footer;
+                $data['post'] = $this->db->get_where('post', array('id' => $_POST['postid']))->result();
+                if ($data['post'])
+                {
+                    $data['comments'] = $this->db->get_where('comment', array('postid' => $data['post'][0]->id, 'approved' => 'approved'))->result();
+                }
+				$data['error'] = "Please enter your name, email and response.";
 				$this->load->view('post/view', $data);
 			}
 		}

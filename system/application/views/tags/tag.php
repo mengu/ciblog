@@ -1,18 +1,21 @@
 <?= $header; ?>
-<div id="" class="grid_12">
-<div style="margin-top: 50px;">
-  <?= $sidebar; ?>
 
-  <div id="posts">
-	<h2 style="font-size: 20px;">Posts Tagged With <?=$tag;?></h2>
-    <? foreach ($posts AS $post): ?>
-      <div class="tagpost"><a href="<?=base_url();?>post/<?=$post->slug;?>"><?=$post->title;?></a></div>
-    <? endforeach; ?>
-  </div>
-
-  <div style="clear: both;"></div>
-  </div>
-
+<div class="page">
+    <div class="line">
+        <div class="unit size2of3">
+            <div id="posts">
+            <div class="post">
+            <h2>Posts Tagged With <?=$tag;?> <a href="http://www.mengu.net/feed/<?=$tagslug;?>"><img src="<?=base_url();?>static/rss.png" style="outline: none; vertical-align: middle;" border="0" /></a></h2>
+            <ul>
+            <? foreach ($posts AS $post): ?>
+              <li class="tagpost"><a href="<?=base_url();?>post/<?=$post->slug;?>"><?=$post->title;?></a></li>
+            <? endforeach; ?>
+            </ul>
+            </div>
+            </div>
+        </div>
+<?= $sidebar; ?>
+    </div>
 </div>
-</div>
+
 <?= $footer; ?>

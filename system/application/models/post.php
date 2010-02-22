@@ -52,6 +52,18 @@ class Post extends Model
 		}
 		return $postTags;
 	}
+    
+    function getPostTagsForKeywords($postId)
+	{
+		$this->db->where('postid', $postId);
+		$tagList = $this->db->get('relations')->result();
+		$postTags = array();
+		foreach ($tagList AS $tag)
+		{
+			$postTags[$tag->id] = strtolower($tag->tag);
+		}
+		return $postTags;
+	}
 
 	function postHasTag($postId, $tagslug)
 	{
@@ -77,14 +89,21 @@ class Post extends Model
 	    $this->db->delete('relations', array('postid' => $postId));
 	}
 
-	function getAllTags()
+	function getAllTags($noanchor = false)
 	{
 		$sql = "SELECT DISTINCT(tagslug), tag FROM relations ORDER BY id DESC";
 		$tagList = $this->db->query($sql)->result();
 		$allTags = array();
 		foreach ($tagList AS $tag)
 		{
-			$allTags[] = anchor("/tag/".$tag->tagslug."", $tag->tag);
+		    if ($noanchor)
+	        {
+	            $allTags[] = $tag->tag;
+	        }
+	        else
+	        {
+	            $allTags[] = anchor("/tag/".$tag->tagslug."", $tag->tag);
+	        }
 		}
 		return implode(", ", $allTags);
 	}

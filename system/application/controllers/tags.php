@@ -8,7 +8,7 @@ class Tags extends Controller
 		parent::Controller();
 		$this->load->model('Post');
 		$this->postCount = $this->db->count_all('post');
-		$this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0), true);
+		$this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0, 'current' => "", 'title' => false, 'keywords' => Post::getAllTags(true)), true);
         $this->footer = $this->load->view('footer', false, true);
 		$this->data['blogArchives'] = $this->Post->getArchives();
 		$this->data['allTags'] = $this->Post->getAllTags();
@@ -21,18 +21,18 @@ class Tags extends Controller
 	function tag()
 	{
 		$tag = $this->uri->segment(2);
-		$tagInfo = $this->db->query("SELECT tag FROM relations WHERE tagslug = '$tag'")->result();
+		$tagInfo = $this->db->query("SELECT tag, tagslug FROM relations WHERE tagslug = '$tag'")->result();
 		$this->db->join('post', "post.id = relations.postid");
 		$this->db->order_by('post.id', 'desc');
 		$this->db->where('published', '1');
 		$data['posts'] = $this->db->get_where('relations', array('tagslug' => strtolower($tag)))->result();
-		$data['header'] = $this->header;
+		$data['header'] = $this->load->view('header', array('title' => $data['post'][0]->title, 'keywords' => $tag), true);
 		$data['sidebar'] = $this->sidebar;
         $data['footer'] = $this->footer;
 		$data['tag'] = $tagInfo[0]->tag;
+		$data['tagslug'] = $tagInfo[0]->tagslug;
 		$this->load->view('tags/tag', $data);
 	}
-
 }
 
 ?>

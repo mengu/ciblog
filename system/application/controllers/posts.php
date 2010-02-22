@@ -17,7 +17,7 @@ class Posts extends Controller
         $this->load->model('Post');
         $this->load->helper('markdown');
         $this->postCount = $this->db->count_all('post');
-        $this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5), true);
+        $this->header = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => "", 'title' => false, 'keywords' => Post::getAllTags(true)), true);
         $this->footer = $this->load->view('footer', false, true);
         $this->data['blogArchives'] = $this->Post->getArchives();
         $this->data['allTags'] = $this->Post->getAllTags();
@@ -29,7 +29,7 @@ class Posts extends Controller
 
     function index()
     {
-        $data['header'] = $this->header;
+        $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => 'home', 'keywords' => Post::getAllTags(true)), true);
         $data['sidebar'] = $this->sidebar;
         $data['footer'] = $this->footer;
         $this->db->where('published', '1');
@@ -45,27 +45,36 @@ class Posts extends Controller
                 $user = $this->session->userdata('user');
                 $data['username'] = $user['name'];
         }
-        $data['header'] = $this->header;
         $data['error'] = false;
         $data['sidebar'] = $this->sidebar;
         $data['footer'] = $this->footer;
         $data['post'] = $this->db->get_where('post', array('slug' => $this->uri->segment(2)))->result();
         if ($data['post'])
         {
+            $postTitle = implode(", ", explode(" ", strtolower($data['post'][0]->title)));
+            $keywords = $postTitle . ", " . implode(", ", Post::getPostTagsForKeywords($data['post'][0]->id));
+            $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => "", 'title' => $data['post'][0]->title, 'keywords' => $keywords), true);
             $data['comments'] = $this->db->get_where('comment', array('postid' => $data['post'][0]->id, 'approved' => 'approved'))->result();
+        }
+        else
+        {
+            $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => "", 'title' => "Mengu.net - No posts found."), true);
         }
         $this->load->view('post/view', $data);
     }
 
     function search()
     {
-        $search = "SELECT post.id, post.title FROM post WHERE post.body
+        $search = "SELECT post.id, post.title, post.slug FROM post WHERE (post.body
                           LIKE '%".$this->db->escape_like_str($_POST['query'])."%'
-                          OR post.title LIKE '%".$this->db->escape_like_str($_POST['query'])."%'";
+                          OR post.title LIKE '%".$this->db->escape_like_str($_POST['query'])."%')
+                          AND post.published = '1'
+                          ORDER BY post.id DESC";
         $data['posts'] = $this->db->query($search)->result();
         $data['sidebar'] = $this->sidebar;
         $data['header'] = $this->header;
         $data['footer'] = $this->footer;
+        $data['query'] = $_POST['query'];
         $this->load->view('post/search', $data);
     }
 

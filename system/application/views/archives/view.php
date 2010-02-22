@@ -1,19 +1,21 @@
 <?= $header; ?>
-<div id="" class="grid_12">
-<div style="margin-top: 50px;">
-  <?= $sidebar; ?>
 
-  <div id="posts">
-	<h2 style="font-size: 20px;">Entries Posted in <?=$archiveDate;?></h2>
-    <? foreach ($archives AS $archive): ?>
-      <div class="tagpost"><a href="<?=base_url();?>post/<?=$archive->slug;?>"><?=$archive->title;?></a></div>
-    <? endforeach; ?>
-  </div>
-
-  <div style="clear: both;"></div>
-  </div>
-
-</div>
+<div class="page">
+    <div class="line">
+        <div class="unit size2of3">
+            <div id="posts">
+            <div class="post">
+            <h2 style="font-size: 20px;">Entries Posted in <?=$archiveDate;?></h2>
+            <ul>
+            <? foreach ($archives AS $archive): ?>
+              <li class="tagpost"><a href="<?=base_url();?>post/<?=$archive->slug;?>"><?=$archive->title;?></a></li>
+            <? endforeach; ?>
+            </ul>
+            </div>
+            </div>
+        </div>
+<?= $sidebar; ?>
+    </div>
 </div>
 
 <?= $footer; ?>
