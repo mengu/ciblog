@@ -126,7 +126,7 @@
     font-size: 1.0em;
 }
 
-.post h2, .posts h2
+.post h2, .posts h2, .page h2
 {
     border-bottom: 1px solid #DEE7EF;
     font-size: 1.3em;
@@ -178,7 +178,7 @@
     margin-bottom: 1%;
 }
 
-.post-body li
+.post-body li, .page li
 {
     margin-left: 3%;
     list-style: disc;
@@ -196,7 +196,7 @@
 .comments
 {
     font-family: Lucida Grande, sans-serif;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 input[type="submit"]
@@ -299,5 +299,11 @@ code
 {
     background:#ADC1D6;
     color:#FFF;
+}
+
+blockquote
+{
+    margin-left: 1%;
+    font-size: 0.9em;
 }
 

@@ -7,10 +7,10 @@ class Users extends Controller
         parent::Controller();
         $this->load->model('Post');
         $this->load->model('User');
-        $this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0, 'current' => "", 'title' => false, 'keywords' => Post::getAllTags(true)), true);
+        $this->header = $this->load->view('header', array('postCount' => 0, 'perPage' => 0, 'current' => "", 'title' => false, 'keywords' => Post::getAllTags(true), 'description' => ""), true);
         $this->footer = $this->load->view('footer', false, true);
         $this->data['allTags'] = $this->Post->getAllTags();
-        $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
+        $this->data['recentPosts'] = $this->Post->getLatestEntries(10);
         $this->data['recentComments'] = $this->Post->getLatestComments(5);
         $this->data['blogArchives'] = $this->Post->getArchives();
         $this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
@@ -19,7 +19,7 @@ class Users extends Controller
 
     function register()
     {
-        $data = array('header' => $this->header, 'footer' => $this->footer, 'sidebar' => $this->sidebar, 'errors' => false);
+        $data = array('header' => $this->header, 'footer' => $this->footer, 'sidebar' => $this->sidebar, 'errors' => false, 'keywords' => "", 'description' => "");
         $this->load->view('users/register', $data);
     }
 

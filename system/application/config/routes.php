@@ -45,6 +45,7 @@ $route['scaffolding_trigger'] = "";
 $route['post/([a-z-0-9]+)'] = 'posts/view/$1';
 $route['tag/([a-z-0-9]+)'] = 'tags/tag/$1';
 $route['pages/([a-z]+)'] = 'pages/view/$1';
+$route['pages/sendmessage'] = 'pages/sendmessage';
 $route['feed'] = 'feed/index';
 $route['feed/([a-z-0-9]+)'] = 'feed/tag/$1';
 

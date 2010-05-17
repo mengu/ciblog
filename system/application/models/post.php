@@ -18,6 +18,7 @@ class Post extends Model
 
 	function getLatestEntries($limit)
 	{
+        $this->db->where('published', '1');
 		$this->db->order_by('id', 'DESC');
 		return $this->db->get('post', $limit)->result();
 	}
@@ -91,14 +92,17 @@ class Post extends Model
 
 	function getAllTags($noanchor = false)
 	{
-		$sql = "SELECT DISTINCT(tagslug), tag FROM relations ORDER BY id DESC";
+		$sql = "SELECT DISTINCT(tagslug), tag FROM relations 
+                JOIN post ON (relations.postid = post.id)
+                WHERE post.published = '1'
+                ORDER BY relations.id DESC";
 		$tagList = $this->db->query($sql)->result();
 		$allTags = array();
 		foreach ($tagList AS $tag)
 		{
 		    if ($noanchor)
 	        {
-	            $allTags[] = $tag->tag;
+	            $allTags[] = strtolower($tag->tag);
 	        }
 	        else
 	        {

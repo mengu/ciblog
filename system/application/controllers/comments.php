@@ -12,7 +12,7 @@ class Comments extends Controller
         $this->footer = $this->load->view('footer', false, true);
         $this->data['blogArchives'] = $this->Post->getArchives();
         $this->data['allTags'] = $this->Post->getAllTags();
-        $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
+        $this->data['recentPosts'] = $this->Post->getLatestEntries(10);
         $this->data['recentComments'] = $this->Post->getLatestComments(5);
         $this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
         $this->sidebar = $this->load->view('sidebar', $this->data, true);

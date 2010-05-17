@@ -21,7 +21,7 @@ class Posts extends Controller
         $this->footer = $this->load->view('footer', false, true);
         $this->data['blogArchives'] = $this->Post->getArchives();
         $this->data['allTags'] = $this->Post->getAllTags();
-        $this->data['recentPosts'] = $this->Post->getLatestEntries(5);
+        $this->data['recentPosts'] = $this->Post->getLatestEntries(10);
         $this->data['recentComments'] = $this->Post->getLatestComments(5);
         $this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
         $this->sidebar = $this->load->view('sidebar', $this->data, true);
@@ -29,7 +29,7 @@ class Posts extends Controller
 
     function index()
     {
-        $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => 'home', 'keywords' => Post::getAllTags(true)), true);
+        $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => 'home', 'keywords' => Post::getAllTags(true), 'description' => substr(Post::getAllTags(true), 0, 150), 'title' => false), true);
         $data['sidebar'] = $this->sidebar;
         $data['footer'] = $this->footer;
         $this->db->where('published', '1');
@@ -51,9 +51,9 @@ class Posts extends Controller
         $data['post'] = $this->db->get_where('post', array('slug' => $this->uri->segment(2)))->result();
         if ($data['post'])
         {
-            $postTitle = implode(", ", explode(" ", strtolower($data['post'][0]->title)));
-            $keywords = $postTitle . ", " . implode(", ", Post::getPostTagsForKeywords($data['post'][0]->id));
-            $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => "", 'title' => $data['post'][0]->title, 'keywords' => $keywords), true);
+            $keywords = implode(", ", Post::getPostTagsForKeywords($data['post'][0]->id));
+            $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => "", 'title' => $data['post'][0]->title, 'description' => substr($data['post'][0]->title, 0, 150), 'keywords' => $keywords), true);
+            $this->db->order_by("comment.dateline", "asc");
             $data['comments'] = $this->db->get_where('comment', array('postid' => $data['post'][0]->id, 'approved' => 'approved'))->result();
         }
         else

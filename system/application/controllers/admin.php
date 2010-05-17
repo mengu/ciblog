@@ -165,6 +165,17 @@ class Admin extends Controller
 			redirect(base_url()."admin/comments");
 		}
 	}
+    
+    function updatecommentcounts()
+    {
+        $comments = $this->db->query("SELECT COUNT(*) as count, postid FROM comment GROUP BY postid")->result();
+        foreach ($comments AS $comment)
+        {
+            echo $comment->postid . " " . $comment->count;
+            $this->db->query("UPDATE post SET commentcount = '".$comment->count."' WHERE id = '".$comment->postid."' ");
+        }
+        $this->db->query("UPDATE post SET commentcount = '0' WHERE commentcount < 0");
+    }
 
 }
 

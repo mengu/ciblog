@@ -1,10 +1,4 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|images|css|js|static|video_files|robots\.txt|favicon\.ico)
-RewriteRule ^(.*)$ /ciblog/index.php/$1 [L]
-#RewriteEngine on
-#RewriteRule ^$ /ciblog/index.php [L]
-#RewriteCond $1 !^(index\.php|images|css|js|static|video_files|robots\.txt|favicon\.ico|tags|post)
-#RewriteRule ^(.*)$ /ciblog/index.php/$1 [L]
-#RewriteRule ^tags/([A-Za-z-]*)$ /ciblog/index.php/tags/tag/$1 [QSA,L]
-#RewriteRule ^post/([A-Za-z-]*)$ /ciblog/index.php/posts/view/$1 [QSA,L]
-#RewriteRule ^posts/more/(.*)$ /ciblog/index.php/posts/more/$1 [QSA,L]
+RewriteCond $1 !^(index\.php|images|css|js|static|video_files|robots\.txt|favicon\.ico|repo|test|test2|tr)
+RewriteRule ^(.*)$ index.php/$1 [L]
+

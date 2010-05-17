@@ -3,7 +3,7 @@
 <head>
   <title><? if($title): echo $title; else: echo "Mengu.net"; endif; ?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="description" content="<?= $title; ?>" />
+  <meta name="description" content="<?= $description; ?>" />
   <meta name="keywords" content="<?=$keywords; ?>" />
   <meta name="google-site-verification" content="EYVj8EmuXzJP9X6kgW2cEHHyn3k6r4DTZBNaHf1Jyno" />
   <link rel="stylesheet" title="GitHub" type="text/css" href="<?=base_url();?>static/libraries.css" />
@@ -18,6 +18,19 @@
   <script type="text/javascript" src="<?=base_url();?>static/jquery.client.js"></script>
   <script type="text/javascript">
       $(document).ready(function(){
+        var ref = document.referrer;
+        var match = ref.match(/q=[\w+]+/);
+        if (match != null)
+        {
+            var query = match[0].replace("q=", "");
+            var query_strings = query.split("+");
+            var query_string = query.replace("+", " ");
+            var html = $(".sidebar").html();
+            $.each(query_strings, function(index, query_str){
+              $(".sidebar a[href*='"+query_str+"']").css({'background':'#F2F5A9', 'color':'#000'});
+            });
+            $(".sidebar a[href*='"+query_string+"']").css({'background':'#F2F5A9', 'color':'#000'});
+        }
         $(".current").corner("tl br 5px");
         $(".box-title").corner("tr tl 5px");
         $(".sidebar").corner("5px");

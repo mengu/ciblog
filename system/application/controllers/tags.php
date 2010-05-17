@@ -12,7 +12,7 @@ class Tags extends Controller
         $this->footer = $this->load->view('footer', false, true);
 		$this->data['blogArchives'] = $this->Post->getArchives();
 		$this->data['allTags'] = $this->Post->getAllTags();
-		$this->data['recentPosts'] = $this->Post->getLatestEntries(5);
+		$this->data['recentPosts'] = $this->Post->getLatestEntries(10);
 		$this->data['recentComments'] = $this->Post->getLatestComments(5);
 		$this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
 		$this->sidebar = $this->load->view('sidebar', $this->data, true);
@@ -26,7 +26,7 @@ class Tags extends Controller
 		$this->db->order_by('post.id', 'desc');
 		$this->db->where('published', '1');
 		$data['posts'] = $this->db->get_where('relations', array('tagslug' => strtolower($tag)))->result();
-		$data['header'] = $this->load->view('header', array('title' => $data['post'][0]->title, 'keywords' => $tag), true);
+		$data['header'] = $this->load->view('header', array('title' => $tagInfo[0]->tag, 'description' => $tagInfo[0]->tag, 'keywords' => $tag), true);
 		$data['sidebar'] = $this->sidebar;
         $data['footer'] = $this->footer;
 		$data['tag'] = $tagInfo[0]->tag;

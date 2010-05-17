@@ -33,6 +33,10 @@ Available for any kind of web development jobs. <a href="<?=base_url();?>pages/a
 <div><a target="_blank" href="http://www.djangoproject">Django</a></div>
 <div><a target="_blank" href="http://www.codeigniter.com">CodeIgniter</a></div>
 <div><a target="_blank" href="http://www.jquery.com">jQuery</a></div>
+<div><a target="_blank" href="http://hosaf.org/node">hoşaf</a></div>
+<div><a target="_blank" href="http://thadeusb.com">ThadeusB</a></div>
+<div><a target="_blank" href="http://www.berkerpeksag.com">Berker Peksağ</a></div>
+<div><a target="_blank" href="http://www.codecommit.com/blog/">Code Commit</a></div>
 </div>
 
 <div class="box-title">Blog Archives</div>

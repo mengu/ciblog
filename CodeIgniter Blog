@@ -14,10 +14,4 @@ description=
 run_cmd=
 
 [files]
-current_page=5
-FILE_NAME_0=0;PHP;0;16;1;1;0;/var/www/ciblog/system/application/controllers/comments.php;0
-FILE_NAME_1=0;PHP;0;16;1;1;0;/var/www/ciblog/system/application/views/admin/comments.php;0
-FILE_NAME_2=4056;PHP;0;16;1;1;0;/var/www/ciblog/system/application/controllers/admin.php;0
-FILE_NAME_3=409;PHP;0;16;1;1;0;/var/www/ciblog/system/application/views/post/index.php;0
-FILE_NAME_4=350;PHP;0;16;1;1;0;/var/www/ciblog/system/application/views/post/view.php;0
-FILE_NAME_5=1673;PHP;0;16;1;1;0;/var/www/ciblog/system/application/views/header.php;0
+current_page=-1
