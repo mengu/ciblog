@@ -25,7 +25,7 @@ class Comments extends Controller
 		{
 			if (!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['body']))
 			{
-                $POST['body'] = htmlspecialchars($_POST['body']);
+                $_POST['body'] = htmlspecialchars($_POST['body']);
 				if ($this->db->insert('comment', $_POST))
 				{
 					$commentCount = $this->Post->getCommentCount($_POST['postid']);

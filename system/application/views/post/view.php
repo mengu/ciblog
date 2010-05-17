@@ -30,6 +30,7 @@
 
                     <h3>Leave a Response</h3>
                     <div class="comment-form">
+                    No HTML allowed. You can use <a href="http://en.wikipedia.org/wiki/Markdown">markdown</a>.
                     <?php
                         echo form_open('/comments/create');
                         echo form_hidden('postid', $post[0]->id);
