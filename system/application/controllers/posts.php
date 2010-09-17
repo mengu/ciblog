@@ -72,7 +72,7 @@ class Posts extends Controller
                           ORDER BY post.id DESC";
         $data['posts'] = $this->db->query($search)->result();
         $data['sidebar'] = $this->sidebar;
-        $data['header'] = $this->header;
+        $data['header'] = $this->load->view('header', array('postCount' => $this->postCount, 'perPage' => 5, 'current' => "", 'title' => "Mengu.net - Search.", 'keywords' => "", 'description' => ""), true);
         $data['footer'] = $this->footer;
         $data['query'] = $_POST['query'];
         $this->load->view('post/search', $data);
@@ -96,7 +96,6 @@ class Posts extends Controller
         }
         echo json_encode($postList);
     }
-
 }
 
 ?>
