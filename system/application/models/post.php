@@ -106,7 +106,7 @@ class Post extends Model
 	        }
 	        else
 	        {
-	            $allTags[] = anchor("/tag/".$tag->tagslug."", $tag->tag);
+	            $allTags[] = anchor("/tag/".$tag->tagslug."", $tag->tag, 'class="tag"');
 	        }
 		}
 		return implode(", ", $allTags);
@@ -114,7 +114,12 @@ class Post extends Model
 
 	function getArchives()
 	{
-	    $archives = $this->db->query("SELECT DISTINCT DATE_FORMAT(dateline, '%M %Y') AS display, DATE_FORMAT(dateline, '%Y/%m') AS link FROM post ORDER BY link DESC")->result();
+	    $archives = $this->db->query("
+                    SELECT DISTINCT DATE_FORMAT(dateline, '%M %Y') AS display, 
+                    DATE_FORMAT(dateline, '%Y/%m') AS link 
+                    FROM post 
+                    WHERE published = '1'
+                    ORDER BY link DESC")->result();
 	    $blogArchives = array();
 	    foreach ($archives AS $archive)
 	    {
