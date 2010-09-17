@@ -79,6 +79,12 @@
           $(".post").css('font-family', 'Lucida Sans Unicode, sans-serif');
           $(".box-title").css('font-family', 'Lucida Sans Unicode, sans-serif');
       }
+      $(".tag").each(function(){
+          $(this).attr('onclick', "_gaq.push(['_trackEvent', 'Tag Links', 'Tag', '"+$(this).html()+"']);");
+      });
+      $(".recent-post a").each(function(){
+          $(this).attr('onclick', "_gaq.push(['_trackEvent', 'Recent Posts', 'Recent Post', '"+$(this).html()+"']);");
+      });
     });
     </script>
   <script type="text/javascript">hljs.initHighlightingOnLoad();</script>

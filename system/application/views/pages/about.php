@@ -8,7 +8,7 @@
                 <p>Hi.</p>
                 <p>I'm Mengu, aged 22 from Istanbul, Turkey. I'm engaged and soon to get married. I have been working as a web developer since 2005. 
                 As many web developers, I have started with PHP and I am still developing PHP applications. And then
-                I have started looking for better tools. So I also have Ruby on Rails, Django, web2py in my tool box. And ofcourse this blog has been
+                I have started looking for better tools. So I also have Ruby on Rails, Django, Pylons and web2py in my tool box. And of course this blog has been
                 developed and designed by me.</p>
                 
                 <p>I like music. I wish I could say I like both playing and listening but I'm just a listener. I'm a metalhead. I love metal. I love headbanging. 

@@ -7,7 +7,7 @@
             <div id="posts">
             <? if (count($post) > 0): ?>
                 <div class="post">
-                    <? if ($post[0]->published): ?>
+                    <? if (($post[0]->published) || ($post[0]->published == false && $this->session->userdata('isAdmin'))): ?>
                     <h1 class="post-title"><?=$post[0]->title;?></h1>
                     <div class="post-info"><?=$post[0]->dateline;?> | <a href="<?=base_url();?>post/<?=$post[0]->slug;?>#comments"><?=$post[0]->commentcount;?> Comment<? if($post[0]->commentcount > 1): ?>s<? endif;?></a></div>
                     <div class="post-body"><?=markdown($post[0]->body);?></div>
@@ -17,11 +17,11 @@
                     <? if (count($comments) > 0): ?>
                     <? $c = 1; ?>
                     <? foreach($comments AS $comment): ?>
-                    <div id="comment-<?=$c;?>">
+                    <div id="comment-<?=$c;?>" class="size1of2">
                         <div class="comment-info"><? if ($comment->website): ?><a href="<?=$comment->website;?>"><?= $comment->name; ?></a><? else: ?><?= $comment->name; ?><? endif;?> said on <?= date("d/m/Y H:i A", $comment->dateline); ?></div>
-                        <div class="comment-box size1of2"><?= markdown($comment->body);?></div>
+                        <div class="comment-box"><?= markdown($comment->body);?></div>
                     </div>
-                    <hr align="left" style="margin-left: 2%;" size="1" width="500" />
+                    <hr align="left" style="margin-left: 1%;" size="1" width="400" />
                     <? $c++; ?>
                     <? endforeach; ?>
                     <? else: ?>
