@@ -53,6 +53,13 @@ Available for any kind of web development jobs. <a href="<?=base_url();?>pages/a
 <? endforeach; ?>
 </div>
 
+<div class="box-title">Recently Enjoyed</div>
+<div class="box-content recent-tracks">
+<? foreach($recentTracks AS $recentTrack): ?>
+    <div><a href="<?= $recentTrack['link'] ?>"><?= $recentTrack['title'] ?></a></div>
+<? endforeach; ?>
+</div>
+
 <? if ($this->session->userdata('isAdmin')): ?>
 <div class="box-title">Administration</div>
 <div class="box-content">

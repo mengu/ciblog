@@ -15,6 +15,7 @@ class Comments extends Controller
         $this->data['recentPosts'] = $this->Post->getLatestEntries(10);
         $this->data['recentComments'] = $this->Post->getLatestComments(5);
         $this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
+        $this->data['recentTracks'] = $this->lastfm->getLatestSongs();
         $this->sidebar = $this->load->view('sidebar', $this->data, true);
 	}
 	

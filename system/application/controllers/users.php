@@ -14,6 +14,7 @@ class Users extends Controller
         $this->data['recentComments'] = $this->Post->getLatestComments(5);
         $this->data['blogArchives'] = $this->Post->getArchives();
         $this->data['unapprovedComments'] = $this->Post->getUnapprovedComments(5);
+        $this->data['recentTracks'] = $this->lastfm->getLatestSongs();
         $this->sidebar = $this->load->view('sidebar', $this->data, true);
     }
 
