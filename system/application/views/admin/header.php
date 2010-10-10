@@ -22,6 +22,7 @@
 	<td><a href="<?=base_url();?>admin/posts">Posts</a></td>
 	<td><a href="<?=base_url();?>admin/comments/">Comments</a></td>
 	<td><a href="<?=base_url();?>admin/users">Users</a></td>
+	<td><a href="<?=base_url();?>admin/contact">Contact</a></td>
 	<td><a href="<?=base_url();?>admin/users">Settings</a></td>
 </tr>
 </table>

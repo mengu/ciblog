@@ -176,6 +176,14 @@ class Admin extends Controller
         $this->db->query("UPDATE post SET commentcount = '0' WHERE commentcount < 0");
     }
 
+    function contact()
+    {
+        $this->db->order_by("id", "desc");
+        $data['header'] = $this->load->view('admin/header', false, true);
+		$data['contacts'] = $this->db->get("contact")->result();
+		$this->load->view('admin/contacts', $data);
+    }
+
 }
 
 ?>
