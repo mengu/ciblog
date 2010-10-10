@@ -109,7 +109,8 @@
                 <li><a <?php if ($current == 'contact'): ?>class="current"<? endif; ?> href="<?=base_url();?>pages/contact">Contact</a></li>
             </ul>
             <div style="float: right;">
-                <a href="http://www.mengu.net/feed"><img src="<?=base_url();?>static/subscribe.png" style="outline: none;" border="0" /></a>
+                <a href="http://twitter.com/mengukagan" style="outline: none;"><img src="http://s.twimg.com/a/1286563368/phoenix/img/twitter_logo_right.png" style="margin-bottom: 15px;" border="0" /></a>
+                <a href="http://www.mengu.net/feed" style="outline: none;"><img src="<?=base_url();?>static/subscribe.png" style="outline: none;" border="0" /></a>
             </div>
             <div style="clear: right">&nbsp;</div>
         </div>
