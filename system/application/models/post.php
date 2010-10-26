@@ -175,6 +175,62 @@ class Post extends Model
 	{
 	    $this->db->update('post', array('slug' => Post::makeTitleReadable($title)), array('id' => $postid));
 	}
+	
+	function getPostsForSitemap() {
+	    $postQuery = "
+        	SELECT p.slug, p.dateline, 
+        	FROM_UNIXTIME((SELECT c.dateline FROM comment AS c
+        		WHERE c.postid = p.id AND c.approved = 'approved'
+        		ORDER BY c.id DESC
+        		LIMIT 1), '%Y-%m-%d %h:%i:%s') AS last_updated
+        	FROM post AS p
+        	WHERE p.published = '1'
+        	ORDER BY p.id DESC
+        ";
+        return $this->db->query($postQuery)->result();   
+	}
+	
+	function getTagsForSitemap() {
+	    $tagQuery = "
+        	SELECT DISTINCT(tagslug), 
+        		(SELECT dateline FROM post AS p WHERE p.id = t.postid ORDER BY p.id DESC) AS last_updated 
+        	FROM relations AS t
+        ";
+        return $this->db->query($tagQuery)->result();
+	}
+	
+	function getLastPostUpdate() {
+		$lastPostUpdateQuery = "
+			SELECT p.dateline, 
+				FROM_UNIXTIME((SELECT c.dateline FROM comment AS c
+				WHERE c.postid = p.id
+				ORDER BY id DESC
+				LIMIT 1), '%Y-%m-%d %h:%i:%s') AS last_updated
+			FROM post AS p
+			ORDER BY p.id DESC
+			LIMIT 1
+		";
+		$result = $this->db->query($lastPostUpdateQuery)->result();
+		return $result[0]->last_updated === null ? $result[0]->dateline : $result[0]->last_updated;
+	}
+	
+	function getLastTagUpdate() {
+		$lastTagUpdateQuery = "
+			SELECT t.id,
+				(SELECT p.dateline FROM post AS p
+				WHERE t.postid = p.id
+				ORDER BY id DESC
+				LIMIT 1) as last_updated
+			FROM relations AS t
+			ORDER BY t.id DESC
+			LIMIT 1
+		";
+		$result = $this->db->query($lastTagUpdateQuery)->result();
+		return $result[0]->last_updated;
+	}
+	
+	
+	
 
 }
 ?>

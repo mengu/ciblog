@@ -48,6 +48,9 @@ $route['pages/([a-z]+)'] = 'pages/view/$1';
 $route['pages/sendmessage'] = 'pages/sendmessage';
 $route['feed'] = 'feed/index';
 $route['feed/([a-z-0-9]+)'] = 'feed/tag/$1';
+$route['sitemap.xml'] = "sitemap/index";
+$route['sitemap/posts.xml'] = "sitemap/posts";
+$route['sitemap/tags.xml'] = "sitemap/tags";
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */
