@@ -55,9 +55,13 @@ Available for any kind of web development jobs. <a href="<?=base_url();?>pages/a
 
 <div class="box-title">Recently Enjoyed</div>
 <div class="box-content recent-tracks">
+<? if (is_array($recentTracks)): ?>
 <? foreach($recentTracks AS $recentTrack): ?>
     <div><a href="<?= $recentTrack['link'] ?>"><?= $recentTrack['title'] ?></a></div>
 <? endforeach; ?>
+<?  else: ?>
+	<div>Cannot fetch the latest listened songs right now.</div>
+<? endif; ?>
 </div>
 
 <? if ($this->session->userdata('isAdmin')): ?>
