@@ -184,6 +184,19 @@ class Admin extends Controller
 		$this->load->view('admin/contacts', $data);
     }
 
+    function deletecontacts() 
+    {
+        $contactIds = $_POST['delete'];
+        if (count($contactIds) > 0)
+        {
+            foreach ($contactIds AS $contactId)
+            {
+                $this->db->delete('contact', array('id' => $contactId));
+            }
+        }
+        redirect(base_url()."admin/contact");
+    }
+
 }
 
 ?>
