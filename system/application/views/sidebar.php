@@ -36,7 +36,6 @@ Available for any kind of web development jobs. <a href="<?=base_url();?>pages/a
     <div><a href="http://github.com/mengu/ideabox">IdeaBox</a></div>
     <div><a href="http://github.com/mengu/expensii">Expensii</a></div>
     <div><a href="https://github.com/mengu/DesktopOrganizer">Desktop Organizer</a></div>
-<? endforeach; ?>
 </div>
 
 <div class="box-title">Recommended Links</div>
