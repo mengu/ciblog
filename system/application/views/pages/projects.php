@@ -22,6 +22,11 @@
                		<div><a href="http://github.com/mengu/expensii">Expensii</a> is an expenses web application that I have built with the Yii framework. I'm updating 
                		the Expensii app whenever it's needed.</div>
                	</p>
+               	
+               	<p>
+               		<h2>Desktop Organizer</h2>
+               		<div><a href="http://github.com/mengu/DesktopOrganizer">DesktopOrganizer</a> is a Qt application built with C++ that lets you organize your desktop.</div>
+               	</p>
                                
                <p>
                    <div>All of these applications are open source and licensed under GPL. Please visit
