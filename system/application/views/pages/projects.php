@@ -13,7 +13,7 @@
                 
                 <p>
                 	<h2>IdeaBox</h2>
-                	<div><a href="http//github.com/mengu/ideabox">IdeaBox</a> is a web application that I have been building with Pylons web framework. It is 
+                	<div><a href="http://github.com/mengu/ideabox">IdeaBox</a> is a web application that I have been building with Pylons web framework. It is 
                 	actively under development. Currently, I and Chris Moylan are calloborating on the project.</div>
                	</p>
                	
