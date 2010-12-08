@@ -44,7 +44,7 @@ Available for any kind of web development jobs. <a href="<?=base_url();?>pages/a
 <div><a target="_blank" href="http://www.web2py.com">web2py</a></div>
 <div><a target="_blank" href="http://dev.pocoo.org">Pocoo</a></div>
 <div><a target="_blank" href="http://www.rubyonrails.com">Ruby on Rails</a></div>
-<div><a target="_blank" href="http://www.djangoproject">Django</a></div>
+<div><a target="_blank" href="http://www.djangoproject.com">Django</a></div>
 <div><a target="_blank" href="http://www.jquery.com">jQuery</a></div>
 <div><a target="_blank" href="http://www.codeigniter.gen.tr">CodeIgniter Türkiye</a></div>
 <div><a target="_blank" href="http://www.ahmetkakici.com">Ahmet Kakıcı</a></div>
