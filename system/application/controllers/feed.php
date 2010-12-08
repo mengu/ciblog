@@ -16,6 +16,7 @@ class Feed extends Controller
         $this->db->where('published', 1);
         $data['posts'] = $this->db->get("post")->result();
         $data['title'] = false;
+        header("Content-Type: application/xml");
         $this->load->view('feeds/main', $data);
     }
 
@@ -29,6 +30,7 @@ class Feed extends Controller
 		$this->db->where('published', '1');
 		$data['posts'] = $this->db->get_where('relations', array('tagslug' => strtolower($tag)))->result();
 		$data['title'] = $tagInfo[0]->tag;
+		header("Content-Type: application/xml");
         $this->load->view('feeds/main', $data);
     }
 
