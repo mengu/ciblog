@@ -3,6 +3,10 @@
     background: #536777 url('../static/images/header-bg.png') repeat-x;
 }
 
+strong {
+    font-weight: bold;
+}
+
 .logo
 {
     font-size: 6em;
